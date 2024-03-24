@@ -15,8 +15,9 @@
     <div class="bg-light container p-3 border border-warning">
       <h1 class="text-center text-warning">Sign in</h1>
       <!-- sign in header  end-->
+
       <!-- sign in  form  start -->
-      <form action="sign_in.php" method="post">
+      <form action="sign-in-recievereq.php" method="post">
 
         <div class="form-group">
           <label for="">email</label>
@@ -35,7 +36,7 @@
         <div>
           <?php
           if (isset($_REQUEST["error"])) {
-            echo " wroooooong";
+            echo " <small class ='text-danger'> Make sure the email address and password you entered is correct.</small>";
           }
           ?>
         </div>

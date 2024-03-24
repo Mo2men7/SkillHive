@@ -46,7 +46,7 @@ var_dump($result);
     // echo "Authentication failed. Invalid email or password.";
 // }
  else {
-    header("location:signin.php?email=$g_email&error=1");
+    header("location:sign-in-sendreq.php?email=$g_email&error=1");
 }
 $connection->close();
 ?>
