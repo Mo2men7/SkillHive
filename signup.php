@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form action="inc/signup.inc.php" method="post" class="needs-validation d-flex flex-column align-items-center mt-5 mb-5" novalidate>
+    <form action="inc/signup.inc.php" method="post" class="needs-validation d-flex flex-column align-items-center mt-5 mb-5" novalidate enctype="multipart/form-data">
         <h2 class="mt-4 text-light">Sign up</h2>
 
         <div class="form-floating col-8 d-flex has-validation flex-column">
@@ -22,10 +22,12 @@
         <div class="form-floating col-8 has-validation d-flex flex-column">
             <input type="email" name="email" class="form-control" id="email" placeholder="Email" aria-describedby="inputGroupPrepend" required>
             <label for="email">Email</label>
-            <!-- <div class="invalid-feedback fs-6 ms-2">
-                Enter Valid Email
-                ex:ex@ex.com
-            </div> -->
+            <?php
+            if (isset($_REQUEST["error"]))
+            {
+                echo "<div class='text-danger text-start'> Email Exists!</div>";
+            }
+            ?>
         </div>
         <div class="form-floating col-8 has-validation d-flex flex-column">
             <input type="password" name="password" class="form-control" id="pass" aria-describedby="inputGroupPrepend" placeholder="Password" required>
