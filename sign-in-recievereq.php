@@ -48,5 +48,6 @@ var_dump($result);
  else {
     header("location:sign-in-sendreq.php?email=$g_email&error=1");
 }
+
 $connection->close();
 ?>

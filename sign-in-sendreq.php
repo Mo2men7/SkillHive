@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<!-- sign in header  start-->
+  <!-- sign in header  start-->
   <div class="container">
     <br><br>
     <div class="bg-light container p-3 border border-warning">
@@ -36,7 +36,9 @@
         <div>
           <?php
           if (isset($_REQUEST["error"])) {
-            echo " <small class ='text-danger'> Make sure the email address and password you entered is correct.</small>";
+            echo " <small class ='text-danger'> 
+            Make sure the email address and password you entered is correct.
+            </small>";
           }
           ?>
         </div>
@@ -45,6 +47,15 @@
     </div>
     </form>
   </div>
+  <!-- console log -->
+  <?php
+  $emailM = "info@marketingpro.com";
+  $passwordM = "market456";
+  echo "<script>console.log('$emailM');</script>";
+  echo "<script>console.log('$passwordM');</script>";
+  ?>
+
+
   <!-- sign in  form end-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
