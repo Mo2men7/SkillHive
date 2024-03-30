@@ -6,12 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/signup.css">
+    <!-- <link rel="stylesheet" href="./css/signup.css"> -->
+    <style>
+
+form {
+    background-color:rgba(0, 0, 0, 0.05);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    width: 50vw;
+    /* border: solid 1px; */
+    font-size: 16px;
+    /* background-color: rgba(255, 255, 255, 0.196); */
+    border-radius: 15px;
+    
+
+}
+
+div {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+
+
+}
+/* 
+label::after {
+    background: none !important;
+} */
+
+/* input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+input[type="file"],
+input[type="file"]::file-selector-button,
+select,
+textarea {
+
+    background: none !important;
+
+} */
+    </style>
 </head>
 
 <body>
     <form action="inc/signup.inc.php" method="post" class="needs-validation d-flex flex-column align-items-center mt-5 mb-5" novalidate enctype="multipart/form-data">
-        <h2 class="mt-4 text-light">Sign up</h2>
+        <h2 class="mt-4 ">Sign up</h2>
 
         <div class="form-floating col-8 d-flex has-validation flex-column">
             <input type="text" name="org_name" class="form-control" id="org_name" placeholder="Organization Name" required>
@@ -61,7 +105,7 @@
         </div>
 
         <div>
-            <input type="submit" class="btn btn-outline-light me-5" name="register" value="Register">
+            <input type="submit" class="btn btn-outline-success me-5" name="register" value="Register">
             <!-- <input type="reset" class="btn btn-outline-light" value="Reset"> -->
         </div>
     </form>
