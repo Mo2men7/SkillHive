@@ -18,6 +18,7 @@ require_once "inc/function.inc.php";
 
         foreach ($_SESSION["jobs"] as $value) {
             // echo "<pre>";
+
             // print_r($value);
             // echo "</pre>";
             // echo "<div class='card my-5'>";
