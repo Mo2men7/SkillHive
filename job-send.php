@@ -33,7 +33,7 @@
         <!-- salary -->
         <div class="form-group">
           <label for="">Salary</label>
-          <input class="form-control"  type="number" placeholder="type The estimated salary by $"name="salary" min="0">
+          <input class="form-control"  type="number" placeholder="type The estimated salary by $" name="salary" min="0">
         </div>
         <br>
         <!-- category -->
