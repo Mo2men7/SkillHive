@@ -1,8 +1,8 @@
 <?php
 require("./inc/connection.php");
 
-$u="michael.smith@example.com";
-$p="abcd456";
+$u=$_POST["email"];
+$p=$_POST["password"];
 
 $dataID;
 $dataFirstName;
