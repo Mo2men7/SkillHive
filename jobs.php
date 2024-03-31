@@ -170,7 +170,7 @@ require_once "inc/function.inc.php";
                 echo "<tr>
           <th scope='row'>" . $app["fname"] . " " . $app["lname"] . "</th>
           <td>" . $app["app_date"] . "</td>
-          <td><a href='" . $app["cv_path"] . "' download='cv'>click here</a></td>";
+          <td><a href='" . $app["cv_path"] . "' download='". $app["fname"].$app["lname"]."_cv'>click here</a></td>";
                 echo "<td><select class='form-select' id='app_status' aria-label='Floating label select example' name='app_status'>";
 
                 foreach ($status as $key => $val) {
