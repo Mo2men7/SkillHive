@@ -36,7 +36,7 @@ if ($cv_value==null){
 }
 
 $phone_number = $_REQUEST['phone']; // Example phone number
-$pattern = "/^(010|012|015)\d{8}$/"; // Regex pattern with delimiters
+$pattern = "/^(010|012|015|011)\d{8}$/"; // Regex pattern with delimiters
 if ($phone_number==null){
     header("location:applyJob-send.php?&ph_error=1");
 }
@@ -83,7 +83,7 @@ if ( isset($_FILES["cv"])) {
 // var_dump($fileType)
 ///////////////////////////////////////////////////////////////////////////////////////////
 $id_app=1;
-$id_job=1;
+$id_job=2;
 $app_status='a';
 // $phone_number = $_REQUEST['phone']; repeting line
 $cv_path=$uploadFile;
