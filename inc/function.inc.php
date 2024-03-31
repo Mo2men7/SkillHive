@@ -71,8 +71,12 @@ function ShowJob($connect, $value)
 
     $div .= " <div class='text-body-secondary fs-20'>
     Expired on 
-    <span class='text-danger me-3'>" . $value["expire_date"] . "</span>
-    <a href='#'class='fa-regular fa-user me-3 text-body-secondary' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'> " . count($value["applicants"]) . "</a></div>";
+    <span class='text-danger me-3'>" . $value["expire_date"] . "</span>";
+    if (isset($value["applicants"])) {
+        $div .= "<a href='#'class='fa-regular fa-user me-3 text-body-secondary' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'> " . count($value["applicants"]) . "</a></div>";
+    } else
+        $div .= "<a a href='#' class='fa-regular fa-user me-3 text-body-secondary' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'>0</a></div>";
+
     $div .= "</div>";
     $div .= "</div>";
     return $div;
@@ -126,20 +130,20 @@ function ModalToEdit($connect, $value)
         <div class='form-floating ms-5 col-8 d-flex justify-content-center '>
             <div class=' col-4 '>";
     if ($value["job_status"] == "o") {
-        $div .= "<input type='radio' class='btn-check ' name='job_status' value='o' id='open' autocomplete='off' checked >
-                <label class='btn btn-outline-success' for='open'>Open</label>";
+        $div .= "<input type='radio' class='btn-check ' name='job_status' value='o' id='".$value["id_job"]."open' autocomplete='off' checked >
+                <label class='btn btn-outline-success' for='".$value["id_job"]."open'>Open</label>";
     } else {
-        $div .= "<input type='radio' class='btn-check ' name='job_status' value='o' id='open' autocomplete='off' >
-                <label class='btn btn-outline-success' for='open'>Open</label>";
+        $div .= "<input type='radio' class='btn-check ' name='job_status' value='o' id='".$value["id_job"]."open' autocomplete='off' >
+                <label class='btn btn-outline-success' for='".$value["id_job"]."open'>Open</label>";
     }
     $div .= "</div>
             <div class=' col-4 '>";
     if ($value["job_status"] == "c") {
-        $div .= "<input type='radio' class='btn-check ' value='c' name='job_status' id='closed' autocomplete='off' checked>
-                <label class='btn btn-outline-danger ' for='closed'>Closed</label>";
+        $div .= "<input type='radio' class='btn-check ' value='c' name='job_status' id='".$value["id_job"]."closed' autocomplete='off' checked>
+                <label class='btn btn-outline-danger ' for='".$value["id_job"]."closed'>Closed</label>";
     } else {
-        $div .= "<input type='radio' class='btn-check ' value='c' name='job_status' id='closed' autocomplete='off'>
-                <label class='btn btn-outline-danger ' for='closed'>Closed</label>";
+        $div .= "<input type='radio' class='btn-check ' value='c' name='job_status' id='".$value["id_job"]."closed' autocomplete='off'>
+                <label class='btn btn-outline-danger ' for='".$value["id_job"]."closed'>Closed</label>";
     }
     $div .= "</div>
         </div>
@@ -159,7 +163,10 @@ function ModalToEdit($connect, $value)
 }
 function ModalToList($connect, $value)
 {
-    $div = " <div class='modal fade' id='" . $value["id_job"] . "listAppModal' tabindex='-1' aria-labelledby='" . $value["id_job"] . "listAppModalLabel' aria-hidden='true'>
+    if (isset($value["applicants"])) {
+        $div = "<form method='get' action='./inc/updateState.inc.php'>";
+
+        $div .= " <div class='modal fade' id='" . $value["id_job"] . "listAppModal' tabindex='-1' aria-labelledby='" . $value["id_job"] . "listAppModalLabel' aria-hidden='true'>
 <div class='modal-dialog modal-dialog-scrollable modal-lg'>
     <div class='modal-content'>
         <div class='modal-header'>
@@ -178,37 +185,53 @@ function ModalToList($connect, $value)
       </thead>
       <tbody>";
 
-    foreach ($value["applicants"] as $app) {
-        $status = ["a" => ["Applied", 0], "p" => ["Pending", 0], "s" => ["Shortlisted", 0], "r" => ["Rejected", 0]];
-        $status[$app["app_status"]][1] = 1;
-        $div .= "<tr>
+        foreach ($value["applicants"] as $app) {
+            $status = ["a" => ["Applied", 0], "p" => ["Pending", 0], "s" => ["Shortlisted", 0], "r" => ["Rejected", 0]];
+            $status[$app["app_status"]][1] = 1;
+            $div .= "<tr>
           <th scope='row'>" . $app["fname"] . " " . $app["lname"] . "</th>
           <td>" . $app["app_date"] . "</td>
           <td><a class='btn btn-primary' href='" . $app["cv_path"] . "' download='" . $app["fname"] . $app["lname"] . "_cv'><i class='fa fa-download'></i></a></td>";
-        $div .= "<td><select class='form-select' id='app_status' aria-label='Floating label select example' name='app_status'>";
+            $div .= "<td><select class='form-select' id='app_status' aria-label='Floating label select example' name='" . $app["id_app"] . "-app_status'>";
 
-        foreach ($status as $key => $val) {
-            if ($val[1])
-                $div .= "<option value='" . $key . "' selected>" . $val[0] . "</option>";
-            else
+            foreach ($status as $key => $val) {
+                if ($val[1])
+                    $div .= "<option value='" . $key . "' selected>" . $val[0] . "</option>";
+                else
 
-                $div .= "<option value='" . $key . "'>" . $val[0] . "</option>";
-        }
+                    $div .= "<option value='" . $key . "'>" . $val[0] . "</option>";
+            }
 
-        $div .= "</select></td>
+            $div .= "</select></td>
         </tr>";
-    }
-    $div .= "</tbody>
+        }
+        $div .= "</tbody>
             </table>";
-    $div .= "
+        $div .= "
         </div>
         <div class='modal-footer'>
             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-            <button type='button' class='btn btn-primary'>Save changes</button>
+            <button type='submit' class='btn btn-primary' name='submit' value='" . $value["id_job"] . "'>Save Changes</button>
         </div>
     </div>
 </div>
 </div>
 ";
+        $div .= "</form>";
+    } else {
+        $div = " <div class='modal fade' id='" . $value["id_job"] . "listAppModal' tabindex='-1' aria-labelledby='" . $value["id_job"] . "listAppModalLabel' aria-hidden='true'>
+<div class='modal-dialog modal-dialog-scrollable'>
+    <div class='modal-content'>
+        <div class='modal-body'>
+        <p>This Job Has No Applicants
+        </div>
+        <div class='modal-footer'>
+            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+        </div>
+    </div>
+</div>
+</div>";
+    }
+
     return $div;
 }
