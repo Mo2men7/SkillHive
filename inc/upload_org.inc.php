@@ -41,3 +41,4 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+$imgname= "./org_pic/".$connect->lastInsertId() . "." . $imageFileType;
