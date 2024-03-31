@@ -17,7 +17,7 @@
       <!-- sign in header  end-->
 
       <!-- sign in  form  start -->
-      <form action="sign-in-recievereq.php" method="post">
+      <form action="sign-in-org-recievereq.php" method="post">
 
         <div class="form-group">
           <label for="">email</label>

@@ -62,14 +62,14 @@
                 <?php
                 if (isset($_REQUEST["phone_error"])) {
                     echo " <small class ='text-danger'> 
-                    Phone number is invalid.
-            </small>";
+                           Phone number is invalid.
+                       </small>";
                 }
                 if (isset($_REQUEST["ph_error"])) {
                     echo " <small class ='text-danger'> 
                    please type you phone number.
-            </small>";
-                }
+                     </small>";
+                 }
                 
                 ?>
                 <br>
@@ -81,7 +81,7 @@
                 if (isset($_REQUEST["cv_error"])) {
                     echo " <small class ='text-danger'> 
                     You haven't uploaded a CV-
-            </small>";
+                    </small>";
                 }
                 ?>
                     <small class="text-danger">accept .pdf only</small>
@@ -97,7 +97,7 @@
         </div>
 
         <br>
-        <button type="submit" class="btn btn-warning">Add Job</button>
+        <button type="submit" class="btn btn-warning">Apply Job</button>
         <?php
         // Close the PHP block
         $connection->close();
