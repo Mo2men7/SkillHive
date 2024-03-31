@@ -11,7 +11,7 @@ require_once "inc/function.inc.php";
     <title>Document</title>
 </head>
 
-<body>
+<body >
     <div class="container">
 
         <?php
@@ -50,7 +50,7 @@ require_once "inc/function.inc.php";
         } ?>" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header ">
                 <!-- <img src="..." class="rounded me-2" alt="..."> -->
-                <i class="fa-regular fa-bell me-2"> </i>
+                <i class="fa-regular fa-bell me-2"></i>
                 <strong class="me-auto"> Edit Done !</strong>
                 <!-- <small>11 mins ago</small> -->
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
