@@ -5,10 +5,7 @@ echo"<br><br><br>";
 var_dump($_FILES);
 echo"<br><br><br>";
 session_start();
-$connection = new mysqli("localhost", "root", "123y", "job_portal");
-if ($connection->connect_errno) {
-    die("error in database connection");
-}
+require_once "./inc/connection.php";
 // phone
 // SQL query to update the phone column
 // $phone_REGEXP ='^(010|012|015)\d{8}$';

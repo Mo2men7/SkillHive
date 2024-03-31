@@ -39,10 +39,7 @@
         <!-- category -->
         <?php
 session_start();
-$connection = new mysqli("localhost", "root", "123y", "job_portal");
-if ($connection->connect_errno) {
-    die("error in database connection");
-}
+require_once "./inc/connection.php";
 $data = $connection->query("SELECT * FROM category");
 ?>
 

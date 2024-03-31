@@ -11,10 +11,7 @@
 <body>
     <?php
     session_start();
-    $connection = new mysqli("localhost", "root", "123y", "job_portal");
-    if ($connection->connect_errno) {
-        die("error in database connection");
-    }
+    require_once "./inc/connection.php";
     $data = $connection->query("SELECT * FROM applicant where id_app='1'");
     $user_info = $data->fetch_assoc();
     var_dump($user_info);
