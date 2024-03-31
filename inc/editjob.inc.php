@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "connect.php";
+require_once "connection.php";
 
 echo "<pre>";
 // print_r($_GET["id"]);

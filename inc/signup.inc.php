@@ -4,7 +4,7 @@ if (isset($_POST["register"])) {
         echo "lol";
         print_r($_FILES["file"]);
 
-        require_once "connect.php";
+        require_once "connection.php";
         $stm = $connect->prepare("insert into organization(org_name,date_of_est,email,password,org_description,location) values (?,?,?,?,?,?)");
 
         $stm->execute([
@@ -26,6 +26,6 @@ if (isset($_POST["register"])) {
         ]);
         header("Location: ../success.php");
     } catch (PDOException $e) {
-        header("Location: ../signup.php?error=1");
+        header("Location: ../signuporg.php?error=1");
     }
 }

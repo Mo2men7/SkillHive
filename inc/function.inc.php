@@ -1,6 +1,6 @@
 <?php
 
-require_once "connect.php";
+require_once "connection.php";
 $_SESSION["jobs"] = jobs($connect, $_SESSION["id_org"]);
 function jobs($connect, $org_id)
 {
