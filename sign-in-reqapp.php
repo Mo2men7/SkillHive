@@ -33,7 +33,7 @@ if ($g_password == $result['password']) {
     $_SESSION["country"] = "$result[country]";
 
 
-    var_dump($_SESSION["id_org"]);
+    // var_dump($_SESSION["id_org"]);
     // session end
     //relocation
     var_dump($result);

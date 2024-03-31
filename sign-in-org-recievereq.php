@@ -29,7 +29,7 @@ if ($g_password == $result['password']) {
     $_SESSION["location"] = "$result[location]";
     // session end
     //relocation start 
-    header("location:profile.php?email=$g_email");
+    header("location:profileorg.php?email=$g_email");
 } else {
     header("location:sign-in-org-sendreq.php?email=$g_email&error=1");
 }
