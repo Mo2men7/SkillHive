@@ -1,5 +1,5 @@
 <?php
-require("connection.php");
+require("./inc/connection.php");
 
 $u="michael.smith@example.com";
 $p="abcd456";

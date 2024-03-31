@@ -1,7 +1,7 @@
 <?php
 
 
-require("connection.php");
+require("./inc/connection.php");
 
 if($_POST['gender']=="male"){$_POST['gender']="m";}
 else if($_POST['gender']=="female"){$_POST['gender']="f";};
