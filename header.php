@@ -1,5 +1,5 @@
 <?php
-    require_once "./inc/connect.php";
+    require_once "./inc/connection.php";
 session_start();
 if (!isset($_SESSION["id_org"])) {
     session_destroy();
