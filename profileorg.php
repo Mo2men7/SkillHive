@@ -1,8 +1,8 @@
 <?php
 require("inc/connection.php");
 
-$u = "info@marketingpro.com";
-$p = "market456";
+$u = "info@techinnovations.com";
+$p = "techpass123";
 
 $dataID;
 $dataFirstName;
@@ -34,6 +34,7 @@ if (isset($u) && isset($p)) {
     $dataEmail = $row['email'];
     $dataPassword = $row['password'];
     $dataLocation = $row['location'];
+    $datapic = $row['org_pic'];
   } else {
     echo "Bye!";
   }
@@ -63,6 +64,7 @@ $connection->close();
           <div class="card mb-4">
             <div class="card-body text-center">
               <h5 class="my-3"><?php echo $dataOrgName  ?></h5>
+              <img src="<?php echo $datapic ?>" alt="">
               <p class="text-muted mb-1"><?php echo $dataOrgName ?></p>
               <p class="text-muted mb-4"><?php echo $dataLocation ?></p>
               <div class="d-flex justify-content-center mb-2">

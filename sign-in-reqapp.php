@@ -33,14 +33,15 @@ if ($g_password == $result['password']) {
     $_SESSION["country"] = "$result[country]";
 
 
-    // var_dump($_SESSION["id_org"]);
+    var_dump($_SESSION["id_org"]);
     // session end
-    //relocation 
+    //relocation
+    var_dump($result);
 
 
-    header("location:profile.php?email=$g_email");
+    // header("location:profile.php?email=$g_email");
 } else {
-    header("location:sign-in-sendreq.php?email=$g_email&error=1");
+    // header("location:sign-in-sendreq.php?email=$g_email&error=1");
 }
 
 $connection->close();
