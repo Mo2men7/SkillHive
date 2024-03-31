@@ -18,7 +18,24 @@ $result = $data->fetch_assoc();
 var_dump($data->fetch_assoc());
 var_dump($result);
 
+
 if ($g_password == $result['password']) {
+
+    // session start
+    $_SESSION["id_app"] = "$result[id_app]";
+    $_SESSION["fname"] = "$result[fname]";
+    $_SESSION["lname"] = "$result[lname]";
+    $_SESSION["date_of_birth"] = "$result[date_of_birth]";
+    $_SESSION["email"] = "$result[email]";
+    $_SESSION["password"] = "$result[password]";
+    $_SESSION["gender"] = "$result[gender]";
+    $_SESSION["user_name"] = "$result[user_name]";
+    $_SESSION["country"] = "$result[country]";
+
+
+    // var_dump($_SESSION["id_org"]);
+    // session end
+    //relocation 
 
 
     header("location:profile.php?email=$g_email");
