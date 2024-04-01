@@ -16,9 +16,9 @@ echo "</pre>";
 //     [id_category] => 5
 //     [job_status] => o
 //     [edit] => Edit
-$stm = $connect->prepare("UPDATE jobs SET job_title=?,job_description=?,expire_date=?,id_category=?,job_status=?,salary=? where id_job=?");
+$stm = $connection->prepare("UPDATE jobs SET job_title=?,job_description=?,expire_date=?,id_category=?,job_status=?,salary=? where id_job=?");
 
-$stm->execute([
+$stm-> bind_param('sssisii',
     $_POST["job_title"],
     $_POST["job_description"],
     $_POST["expire_date"],
@@ -26,7 +26,8 @@ $stm->execute([
     $_POST["job_status"],
     $_POST["salary"],
     $_POST["id_job"]
-]);
+);
+$stm->execute();
 $_SESSION["showEditToast"]=1;
 header("Location: ../../jobs.php");
 // header("Location: ../signup.php?error=1");

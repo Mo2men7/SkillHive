@@ -1,27 +1,27 @@
 <?php
 
 require_once "connection.php";
-$_SESSION["jobs"] = jobs($connect, $_SESSION["id_org"]);
+$_SESSION["jobs"] = jobs($connection, $_SESSION["id_org"]);
 function jobs($connect, $org_id)
 {
     // require_once "connect.php";
-    $stmjob = $connect->prepare("SELECT jobs.* ,category.category FROM jobs inner join category on jobs.id_category = category.id_category where jobs.org_id=?;
-   ");
+    $stmjob = $connect->prepare("SELECT jobs.* ,category.category FROM jobs inner join category on jobs.id_category = category.id_category where jobs.org_id= ? ORDER BY jobs.publish_date DESC");
+    // echo "$org_id";
+    $stmjob->bind_param('i',$org_id);
+    $stmjob->execute();
+    // $stmt->bind_result($district);
 
-    $stmjob->execute([
-        $org_id
-    ]);
-
-    $resjob = $stmjob->fetchAll();
+    $resjob = $stmjob->get_result()->fetch_all(MYSQLI_ASSOC);
     $fixingId = array();
     foreach ($resjob as $job) {
         $fixingId[$job["id_job"]] = $job;
-        $stmapp = $connect->prepare("SELECT applicant.* , job_app.* from applicant inner join job_app on applicant.id_app=job_app.id_app where job_app.id_job=?;");
+        $stmapp = $connect->prepare("SELECT applicant.* , job_app.* from applicant inner join job_app on applicant.id_app=job_app.id_app where job_app.id_job=?; ");
 
-        $stmapp->execute([
+        $stmapp->bind_param('i',
             $job["id_job"]
-        ]);
-        $resapp = $stmapp->fetchAll();
+        );
+        $stmapp->execute();
+        $resapp = $stmapp->get_result()->fetch_all(MYSQLI_ASSOC);
         foreach ($resapp as $app) {
             $fixingId[$job["id_job"]]["applicants"][$app["id_app"]] = $app;
         }
@@ -32,7 +32,7 @@ function getCategory($connect)
 {
     $stm = $connect->prepare("SELECT * FROM category;");
     $stm->execute();
-    $res = $stm->fetchAll();
+    $res = $stm->get_result()->fetch_all(MYSQLI_ASSOC);
     return $res;
 }
 function ShowJob($connect, $value)
@@ -46,12 +46,12 @@ function ShowJob($connect, $value)
     }
 
 
-    $div = "<div class='card border-" . $colorOnStatus . " mb-3 my-4 '>
+    $div = "<div class='".$jobStatus." card border-" . $colorOnStatus . " mb-3 my-4 '>
     <div class='card-header d-flex justify-content-between align-items-baseline'>
     <div class='d-flex  align-items-center'>
     <span class='fw-bold fs-4'>" . $value["job_title"] . "</span>
     
-    <span class='badge text-bg-" . $colorOnStatus . " fs-7 ms-2'>" . $jobStatus . "</span>
+    <span class=' badge text-bg-" . $colorOnStatus . " fs-7 ms-2'>" . $jobStatus . "</span>
     
     </div>
     <div  class='text-body-secondary fs-20'>Published on " . $value["publish_date"] . "</div>
@@ -130,20 +130,20 @@ function ModalToEdit($connect, $value)
         <div class='form-floating ms-5 col-8 d-flex justify-content-center '>
             <div class=' col-4 '>";
     if ($value["job_status"] == "o") {
-        $div .= "<input type='radio' class='btn-check ' name='job_status' value='o' id='".$value["id_job"]."open' autocomplete='off' checked >
-                <label class='btn btn-outline-success' for='".$value["id_job"]."open'>Open</label>";
+        $div .= "<input type='radio' class='btn-check ' name='job_status' value='o' id='" . $value["id_job"] . "open' autocomplete='off' checked >
+                <label class='btn btn-outline-success' for='" . $value["id_job"] . "open'>Open</label>";
     } else {
-        $div .= "<input type='radio' class='btn-check ' name='job_status' value='o' id='".$value["id_job"]."open' autocomplete='off' >
-                <label class='btn btn-outline-success' for='".$value["id_job"]."open'>Open</label>";
+        $div .= "<input type='radio' class='btn-check ' name='job_status' value='o' id='" . $value["id_job"] . "open' autocomplete='off' >
+                <label class='btn btn-outline-success' for='" . $value["id_job"] . "open'>Open</label>";
     }
     $div .= "</div>
             <div class=' col-4 '>";
     if ($value["job_status"] == "c") {
-        $div .= "<input type='radio' class='btn-check ' value='c' name='job_status' id='".$value["id_job"]."closed' autocomplete='off' checked>
-                <label class='btn btn-outline-danger ' for='".$value["id_job"]."closed'>Closed</label>";
+        $div .= "<input type='radio' class='btn-check ' value='c' name='job_status' id='" . $value["id_job"] . "closed' autocomplete='off' checked>
+                <label class='btn btn-outline-danger ' for='" . $value["id_job"] . "closed'>Closed</label>";
     } else {
-        $div .= "<input type='radio' class='btn-check ' value='c' name='job_status' id='".$value["id_job"]."closed' autocomplete='off'>
-                <label class='btn btn-outline-danger ' for='".$value["id_job"]."closed'>Closed</label>";
+        $div .= "<input type='radio' class='btn-check ' value='c' name='job_status' id='" . $value["id_job"] . "closed' autocomplete='off'>
+                <label class='btn btn-outline-danger ' for='" . $value["id_job"] . "closed'>Closed</label>";
     }
     $div .= "</div>
         </div>

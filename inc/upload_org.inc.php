@@ -7,7 +7,7 @@ $target_dir = "../org_pic/";
 $target_file = $target_dir . basename($_FILES["file"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-$imgname =  $connect->lastInsertId() . "." . $imageFileType;
+$imgname =  $connection->insert_id . "." . $imageFileType;
 
 // Check if image file is a actual image or fake image
 if (isset($_POST["submit"])) {
@@ -41,4 +41,4 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-$imgname= "./org_pic/".$connect->lastInsertId() . "." . $imageFileType;
+$imgname= "./org_pic/". $connection->insert_id . "." . $imageFileType;

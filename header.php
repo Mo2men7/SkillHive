@@ -20,7 +20,7 @@ if (!isset($_SESSION["id_org"])) {
 
 <body>
     <!-- <nav class="navbar  " > -->
-    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body  sticky-top" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body sticky-top" data-bs-theme="dark" style="height: 10vh";>
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
