@@ -46,7 +46,7 @@ function ShowJob($connect, $value)
     }
 
 
-    $div = "<div class='".$jobStatus." card border-" . $colorOnStatus . " mb-3 my-4 '>
+    $div = "<div class='eachjob ".$jobStatus." card border-" . $colorOnStatus . " mb-3 my-4 '>
     <div class='card-header d-flex justify-content-between align-items-baseline'>
     <div class='d-flex  align-items-center'>
     <span class='fw-bold fs-4'>" . $value["job_title"] . "</span>

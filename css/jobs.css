@@ -1,0 +1,65 @@
+#allJobsId {
+    width: 100%
+}
+
+#catId {
+    height: 91vh;
+}
+
+#catId>li {
+    width: 80%;
+
+    /* style="width:80%;" */
+}
+.eachjob
+    {
+        /* margin-left: 5vw; */
+        margin-right: 5vw;
+    }
+@media screen and (max-width :991px) {
+
+    #catId {
+        flex-direction: row;
+        height: 10vh;
+        width: 100vw;
+        border-bottom: none;
+    }
+
+    #allJobsId {
+        /* overflow: scroll; */
+        width: 100vw;
+        padding:0 !important;
+        margin: 0;
+
+        /* border: solid aqua; */
+
+    }
+
+    #jobsandcat {
+        flex-direction: column;
+        /* border: solid aqua; */
+
+    }
+
+    #catId>li {
+        width: 20%;
+        height: 80%;
+        margin: 0 !important;
+        /* style="width:80%;" */
+    }
+
+    #catId>li>a {
+        height: 15vh;
+        padding-bottom: 20%;
+        width:fit-content;
+
+    }
+    .eachjob
+    {
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
+    /* .eachJob{
+    border:blue;
+} */
+}

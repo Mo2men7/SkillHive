@@ -6,47 +6,54 @@ require_once "inc/function.inc.php";
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <script defer src="./js/jobsorg.js"></script>
+<link rel="stylesheet" href="./css/jobs.css">
+<style>
+    
+</style>
 
 <body>
 
-    <div class="d-flex justify-content-between  overflow-hidden" style="height:90vh">
-        <ul class=" nav nav-tabs flex-column col-2 align-items-center justify-content-around bg-dark" style="height:91vh ;">
-            <li class="nav-item ms-5 " style="width:80%; ">
+
+    <div id="jobsandcat" class="d-flex overflow-hidden bg-dark " style="height:90vh">
+
+        <ul id="catId" class="nav nav-tabs flex-column col-2 align-items-center justify-content-around bg-dark">
+            <li class="nav-item ms-5 ">
                 <a class="nav-link border border-0 active text-dark filterIt text-light" aria-current="page" href="#">All Jobs
 
-                <span class="ms-2 badge text-bg-danger">
-                        <?php echo count($_SESSION["jobs"])?>
-                        </span>
-           
+                    <span class="ms-2 badge text-bg-danger">
+                        <?php echo count($_SESSION["jobs"]) ?>
+                    </span>
+
                 </a>
-                 
+
             </li>
-            <li class="nav-item  ms-5" style="width:80%;">
+            <li class="nav-item  ms-5">
                 <a class="nav-link border border-0 text-light filterIt" href="#">Opened
 
-                <span class="ms-2 badge text-bg-danger">
-                        
-                        </span>
-           
+                    <span class="ms-2 badge text-bg-danger">
+
+                    </span>
+
                 </a>
             </li>
-            <li class="nav-item ms-5" style="width:80%;">
+            <li class="nav-item ms-5">
                 <a class="nav-link border border-0 text-light filterIt" href="#">Closed
 
-                <span class="ms-2 badge text-bg-danger">
-                        
-                        </span>
-           
+                    <span class="ms-2 badge text-bg-danger">
+
+                    </span>
+
                 </a>
             </li>
 
         </ul>
-        <div class="allJobs container overflow-auto ms-4">
+        <div id="allJobsId" class="allJobs overflow-auto bg-white ps-5 rounded-4 mb-2">
 
             <?php
             if (count($_SESSION["jobs"]) == 0)
