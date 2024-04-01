@@ -1,4 +1,7 @@
 <?php
+/////////////////////////////////////////////////////////////////
+$id_job = $_REQUEST['job-id']  ;
+//////////////////////////////////////////////////////////////
 var_dump($_REQUEST); //delete
 echo "<br><br><br>"; //delete
 var_dump($_FILES); //delete
@@ -59,7 +62,9 @@ if (isset($_FILES["cv"])) {
 echo "<br><br><br>"; //delete
 var_dump($id_app); //delete
 echo "<br><br><br>";  //delete
-$id_job = 4;                                                        //need to change
+//********************************* */
+// $id_job = $_REQUEST['job-id']  ;   // repeting line
+//********************************* */                                                //need to change
 $app_status = 'a';
 // $phone_number = $_REQUEST['phone']; repeting line
 $cv_path = $uploadFile;
@@ -74,19 +79,43 @@ echo "<br>"; //delete
 
 
 
+// if ($cv_value != null && $phone_number != null && preg_match($pattern, $phone_number)) {
+//     $data1 = $connection->query("
+//     INSERT INTO job_app (id_app ,id_job,app_status,app_date,cv_path,phone)
+//     VALUES ('$id_app','$id_job','$app_status',CURDATE(),'$cv_path','$phone_number')
+//     ");
+
+
+
+//      //relocation link
+//      //relocation link
+//      header("location:available-jobs.php");
+//     echo "relocation";
+// };
+
+// Check if the data is not null and phone number matches the pattern
 if ($cv_value != null && $phone_number != null && preg_match($pattern, $phone_number)) {
-    $data1 = $connection->query("
-    INSERT INTO job_app (id_app ,id_job,app_status,app_date,cv_path,phone)
-    VALUES ('$id_app','$id_job','$app_status',CURDATE(),'$cv_path','$phone_number')
-    ");
+
+    $checkQuery = "SELECT * FROM job_app WHERE id_app = '$id_app' AND id_job = '$id_job' AND phone = '$phone_number'";
+    $result = $connection->query($checkQuery);
+
+    if ($result->num_rows > 0) {
+        // If a record with the same key values already exists, show an error message
+        echo "Error: Duplicate entry. This application has already been submitted.";
+    } else {
+        // If no duplicate entry found, proceed with insertion
+        $insertQuery = "INSERT INTO job_app (id_app, id_job, app_status, app_date, cv_path, phone)
+                        VALUES ('$id_app', '$id_job', '$app_status', CURDATE(), '$cv_path', '$phone_number')";
+            header("location: available-jobs.php");
+        
+    }
+} else {
+    // Handle the case where input data is not valid
+}
 
 
 
-     //relocation link
-    //  header("location:.php");
-    echo "relocation";
-};
 
 
-// $data->fetch_assoc();
+
 $connection->close();

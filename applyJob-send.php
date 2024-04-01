@@ -15,9 +15,9 @@
     $data = $connection->query("SELECT * FROM applicant where id_app='1'");
     $user_info = $data->fetch_assoc();
     var_dump($user_info);
-    echo"<br><br><br>";
+    echo "<br><br><br>";
     var_dump($_REQUEST);
-    echo"<br><br><br>";
+    echo "<br><br><br>";
     ?>
 
 
@@ -32,7 +32,11 @@
             <?php echo $user_info['country']; ?>
             <br><br>
             <!-- form  start -->
-            <form action="applyJob-recieve.php" method="post" enctype="multipart/form-data">
+            <!-- <form action="applyJob-recieve.php" method="post" enctype="multipart/form-data"> -->
+            <!-- ************************************************************* */  -->
+            <?php $jobid = $_REQUEST['job-id']; ?>
+            <form action="applyJob-recieve.php?job-id=<?php echo $_REQUEST['job-id']; ?>" method="post" enctype="multipart/form-data">
+                <!-- ************************************************************************** */  -->
                 <!-- name -->
                 <div class="form-group">
                     <label for="">Name</label>
@@ -48,13 +52,12 @@
                 <!-- phone -->
                 <div class="form-group">
                     <label for="">Phone</label>
-                    <input type="tel" class="form-control " name="phone" placeholder="Type your number ex:01011223344" 
-                    <?php
-                     if (isset($_REQUEST["phone"])) {
-                     echo"  value='$_REQUEST[phone]' ";
-                    }
+                    <input type="tel" class="form-control " name="phone" placeholder="Type your number ex:01011223344" <?php
+                                                                                                                        if (isset($_REQUEST["phone"])) {
+                                                                                                                            echo "  value='$_REQUEST[phone]' ";
+                                                                                                                        }
 
-                                                                                                        ?>>
+                                                                                                                        ?>>
                 </div>
                 <?php
                 if (isset($_REQUEST["phone_error"])) {
@@ -66,8 +69,8 @@
                     echo " <small class ='text-danger'> 
                    please type you phone number.
                      </small>";
-                 }
-                
+                }
+
                 ?>
                 <br>
                 <!-- resume -->
@@ -75,15 +78,15 @@
                     <label for="cv">Upload resume</label>
                     <input type="file" class="form-control" name="cv" accept=".pdf">
                     <?php
-                if (isset($_REQUEST["cv_error"])) {
-                    echo " <small class ='text-danger'> 
+                    if (isset($_REQUEST["cv_error"])) {
+                        echo " <small class ='text-danger'> 
                     You haven't uploaded a CV-
                     </small>";
-                }
-                ?>
+                    }
+                    ?>
                     <small class="text-danger">accept .pdf only</small>
                 </div>
-                
+
                 <br>
                 <!-- date -->
                 <div class="form-group">
