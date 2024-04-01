@@ -31,6 +31,7 @@ if ($g_password == $result['password']) {
     $_SESSION["gender"] = "$result[gender]";
     $_SESSION["user_name"] = "$result[user_name]";
     $_SESSION["country"] = "$result[country]";
+    $_SESSION["app_pic"] = "$result[app_pic]";
 
 
     // var_dump($_SESSION["id_org"]);

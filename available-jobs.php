@@ -2,15 +2,16 @@
 
 require("./inc/connection.php");
 // $jobsData = $connection->query("select jobs.*,category.category,organization.org_name from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id;");
-$DataScienceData = $connection->query("select jobs.*,category.category,organization.org_name from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id where category = 'Data Science';");
-$WritingData = $connection->query("select jobs.*,category.category,organization.org_name from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id where category = 'Writing';");
-$SalesData = $connection->query("select jobs.*,category.category,organization.org_name from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id where category = 'Sales';");
-$CustomerSupportData = $connection->query("select jobs.*,category.category,organization.org_name from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id where category = 'Customer Support';");
-$ProjectManagementData = $connection->query("select jobs.*,category.category,organization.org_name from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id where category = 'Project Management';");
-$DataAnalysisData = $connection->query("select jobs.*,category.category,organization.org_name from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id where category = 'Data Analysis';");
+$DataScienceData = $connection->query("select jobs.*,category.category,organization.* from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id where category = 'Data Science';");
+$WritingData = $connection->query("select jobs.*,category.category,organization.* from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id where category = 'Writing';");
+$SalesData = $connection->query("select jobs.*,category.category,organization.* from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id where category = 'Sales';");
+$CustomerSupportData = $connection->query("select jobs.*,category.category,organization.* from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id where category = 'Customer Support';");
+$ProjectManagementData = $connection->query("select jobs.*,category.category,organization.* from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id where category = 'Project Management';");
+$DataAnalysisData = $connection->query("select jobs.*,category.category,organization.* from jobs inner join category on jobs.id_category= category.id_category inner join organization on organization.id_org=jobs.org_id where category = 'Data Analysis';");
 $categoryData = $connection->query("select * from category");
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,38 +20,51 @@ $categoryData = $connection->query("select * from category");
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jobs</title>
   <link rel="stylesheet" href="available.css">
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="fontawesome/all.min.css">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
   <script src="bootstrap/js/bootstrap.bundle.js"></script>
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand text-light fw-bold">SkillHive</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
-            <a class="nav-link text-light">Jobs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light">Profile</a>
-          </li>
-        </ul>
-        <form action="jobsData.php" method="post" class="d-flex" role="newSearch">
-          <input class="form-control me-2" type="Search" name="Search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-light" type="submit" name="submit">Search</button>
-        </form>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center mb-5 p-2">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="logo">
+        <a href= "index.php"><img src="assets/sh.png" style="width: 180px;"></a>
       </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="jobsData.php">Jobs</a></li>
+          <li><a class="nav-link scrollto" href="checklistjobsapp.php">Last Projects</a></li>
+          <li class="ms-2"><a style="cursor:default;"><?php echo $_SESSION['fname'] ?></a></li>
+          <li><a class="nav-link scrollto" href="applicantProfile.php">
+            <img src="<?php echo $_SESSION['app_pic'] ?>" class="rounded-circle" style="width:40px;">
+          </a></li>
+          <li><a href="jobsData.php?logout=1" class="text-danger text-center" style="width:fit-content;">
+            <i class="fa-solid fa-circle-right fs-5 me-2"></i> Logout
+            <?php 
+              if(isset($_GET['logout']) && $_GET['logout']==1){
+                session_destroy();
+                header('Location:index.php');
+              }
+            ?>
+          </a></li>
+      </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
     </div>
-  </nav>
-  <!-- Navbar -->
-  <div class="row h-100 w-100">
+  </header>
+  <!-- End Header -->
+
+  <!-- <div class="w-100 mt-5 mb-5"></div> -->
+
+  <div class="row h-100 w-100 mt-5">
     <!-- Sidebar -->
     <sidebar id="sidebarMenu" class="sidebar bg-white col-md-2 d-flex flex-column gap-3 pt-5 ps-4">
       <button class="tab tablinks" onclick="openTab(event, 'all')" id="defaultOpen">All</button>
@@ -64,6 +78,12 @@ $categoryData = $connection->query("select * from category");
     <!--Main layout-->
     <main style="margin-top: 40px;" class="tabContent col-md-10">
 
+    <div>
+    <form action="jobsData.php" method="post" class="d-flex mt-1 mb-3 px-3" role="newSearch">
+          <input class="form-control me-2 w-75" type="Search" name="Search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-dark w-25" type="submit" name="submit">Search</button>
+        </form>
+    </div>
       <!-- all jobs -->
       <div class="container mb-3 tabcontent" id="all">
         <div class="row">
@@ -76,8 +96,8 @@ $categoryData = $connection->query("select * from category");
               echo '<div class="d-flex justify-content-between">';
               echo '<div class="d-flex flex-row align-items-center">';
               // echo '<div class="icon"> <i class="fa-brands fa-mailchimp"></i> </div>';
-              if (isset($row['org_pic'])) {
-                echo '<div class="icon">' . '<img src="' . 'org_pic/' . $row['org_pic'] . '" >' . '</div>';
+              if(($row['org_pic'])){
+                echo "<div class='icon'>"."<img style='width:50px; height:50px;' class='rounded-circle' src='".$row['org_pic']."' >"."</div>";
               }
               echo '<div class="ms-2 c-details">';
               echo '<h6 class="mb-0">' . $row['org_name'] . '</h6> <small>' . $row['expire_date'] . '</small>';
@@ -90,7 +110,7 @@ $categoryData = $connection->query("select * from category");
               echo '<p>' . $row['category'] . '</p>';
               echo '<small class="text-success">$' . $row['salary'] . '</small>';
               echo '<div class="mt-5">';
-              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-success w-100">Apply</a>';
+              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-primary w-100">Apply</a>';
               echo '</div>';
               echo '</div>';
               echo '</div>';
@@ -118,8 +138,8 @@ $categoryData = $connection->query("select * from category");
               echo '<div class="d-flex justify-content-between">';
               echo '<div class="d-flex flex-row align-items-center">';
               // echo '<div class="icon"> <i class="fa-brands fa-mailchimp"></i> </div>';
-              if (isset($row['org_pic'])) {
-                echo '<div class="icon">' . '<img src="' . 'org_pic/' . $row['org_pic'] . '" >' . '</div>';
+              if(($row['org_pic'])){
+                echo "<div class='icon'>"."<img style='width:50px; height:50px;' class='rounded-circle' src='".$row['org_pic']."' >"."</div>";
               }
               echo '<div class="ms-2 c-details">';
               echo '<h6 class="mb-0">' . $row['org_name'] . '</h6> <small>' . $row['expire_date'] . '</small>';
@@ -132,7 +152,7 @@ $categoryData = $connection->query("select * from category");
               echo '<p>' . $row['category'] . '</p>';
               echo '<small class="text-success">$' . $row['salary'] . '</small>';
               echo '<div class="mt-5">';
-              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-success w-100">Apply</a>';
+              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-primary w-100">Apply</a>';
               echo '</div>';
               echo '</div>';
               echo '</div>';
@@ -159,8 +179,8 @@ $categoryData = $connection->query("select * from category");
               echo '<div class="d-flex justify-content-between">';
               echo '<div class="d-flex flex-row align-items-center">';
               // echo '<div class="icon"> <i class="fa-brands fa-mailchimp"></i> </div>';
-              if (isset($row['org_pic'])) {
-                echo '<div class="icon">' . '<img src="' . 'org_pic/' . $row['org_pic'] . '" >' . '</div>';
+              if(($row['org_pic'])){
+                echo "<div class='icon'>"."<img style='width:50px; height:50px;' class='rounded-circle' src='".$row['org_pic']."' >"."</div>";
               }
               echo '<div class="ms-2 c-details">';
               echo '<h6 class="mb-0">' . $row['org_name'] . '</h6> <small>' . $row['expire_date'] . '</small>';
@@ -173,7 +193,7 @@ $categoryData = $connection->query("select * from category");
               echo '<p>' . $row['category'] . '</p>';
               echo '<small class="text-success">$' . $row['salary'] . '</small>';
               echo '<div class="mt-5">';
-              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-success w-100">Apply</a>';
+              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-primary w-100">Apply</a>';
               echo '</div>';
               echo '</div>';
               echo '</div>';
@@ -201,8 +221,8 @@ $categoryData = $connection->query("select * from category");
               echo '<div class="d-flex justify-content-between">';
               echo '<div class="d-flex flex-row align-items-center">';
               // echo '<div class="icon"> <i class="fa-brands fa-mailchimp"></i> </div>';
-              if (isset($row['org_pic'])) {
-                echo '<div class="icon">' . '<img src="' . 'org_pic/' . $row['org_pic'] . '" >' . '</div>';
+              if(($row['org_pic'])){
+                echo "<div class='icon'>"."<img style='width:50px; height:50px;' class='rounded-circle' src='".$row['org_pic']."' >"."</div>";
               }
               echo '<div class="ms-2 c-details">';
               echo '<h6 class="mb-0">' . $row['org_name'] . '</h6> <small>' . $row['expire_date'] . '</small>';
@@ -215,7 +235,7 @@ $categoryData = $connection->query("select * from category");
               echo '<p>' . $row['category'] . '</p>';
               echo '<small class="text-success">$' . $row['salary'] . '</small>';
               echo '<div class="mt-5">';
-              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-success w-100">Apply</a>';
+              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-primary w-100">Apply</a>';
               echo '</div>';
               echo '</div>';
               echo '</div>';
@@ -242,8 +262,8 @@ $categoryData = $connection->query("select * from category");
               echo '<div class="d-flex justify-content-between">';
               echo '<div class="d-flex flex-row align-items-center">';
               // echo '<div class="icon"> <i class="fa-brands fa-mailchimp"></i> </div>';
-              if (isset($row['org_pic'])) {
-                echo '<div class="icon">' . '<img src="' . 'org_pic/' . $row['org_pic'] . '" >' . '</div>';
+              if(($row['org_pic'])){
+                echo "<div class='icon'>"."<img style='width:50px; height:50px;' class='rounded-circle' src='".$row['org_pic']."' >"."</div>";
               }
               echo '<div class="ms-2 c-details">';
               echo '<h6 class="mb-0">' . $row['org_name'] . '</h6> <small>' . $row['expire_date'] . '</small>';
@@ -256,7 +276,7 @@ $categoryData = $connection->query("select * from category");
               echo '<p>' . $row['category'] . '</p>';
               echo '<small class="text-success">$' . $row['salary'] . '</small>';
               echo '<div class="mt-5">';
-              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-success w-100">Apply</a>';
+              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-primary w-100">Apply</a>';
               echo '</div>';
               echo '</div>';
               echo '</div>';
@@ -284,8 +304,8 @@ $categoryData = $connection->query("select * from category");
               echo '<div class="d-flex justify-content-between">';
               echo '<div class="d-flex flex-row align-items-center">';
               // echo '<div class="icon"> <i class="fa-brands fa-mailchimp"></i> </div>';
-              if (isset($row['org_pic'])) {
-                echo '<div class="icon">' . '<img src="' . 'org_pic/' . $row['org_pic'] . '" >' . '</div>';
+              if(($row['org_pic'])){
+                echo "<div class='icon'>"."<img style='width:50px; height:50px;' class='rounded-circle' src='".$row['org_pic']."' >"."</div>";
               }
               echo '<div class="ms-2 c-details">';
               echo '<h6 class="mb-0">' . $row['org_name'] . '</h6> <small>' . $row['expire_date'] . '</small>';
@@ -298,7 +318,7 @@ $categoryData = $connection->query("select * from category");
               echo '<p>' . $row['category'] . '</p>';
               echo '<small class="text-success">$' . $row['salary'] . '</small>';
               echo '<div class="mt-5">';
-              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-success w-100">Apply</a>';
+              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-primary w-100">Apply</a>';
               echo '</div>';
               echo '</div>';
               echo '</div>';
@@ -326,8 +346,8 @@ $categoryData = $connection->query("select * from category");
               echo '<div class="d-flex justify-content-between">';
               echo '<div class="d-flex flex-row align-items-center">';
               // echo '<div class="icon"> <i class="fa-brands fa-mailchimp"></i> </div>';
-              if (isset($row['org_pic'])) {
-                echo '<div class="icon">' . '<img src="' . 'org_pic/' . $row['org_pic'] . '" >' . '</div>';
+              if(($row['org_pic'])){
+                echo "<div class='icon'>"."<img style='width:50px; height:50px;' class='rounded-circle' src='".$row['org_pic']."' >"."</div>";
               }
               echo '<div class="ms-2 c-details">';
               echo '<h6 class="mb-0">' . $row['org_name'] . '</h6> <small>' . $row['expire_date'] . '</small>';
@@ -340,7 +360,7 @@ $categoryData = $connection->query("select * from category");
               echo '<p>' . $row['category'] . '</p>';
               echo '<small class="text-success">$' . $row['salary'] . '</small>';
               echo '<div class="mt-5">';
-              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-success w-100">Apply</a>';
+              echo '<a href="applyJob-send.php?job-id=' . $row['id_job'] . '" class="btn btn-primary w-100">Apply</a>';
               echo '</div>';
               echo '</div>';
               echo '</div>';
