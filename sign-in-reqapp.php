@@ -26,8 +26,8 @@ if ($g_password == $result['password']) {
     $_SESSION["fname"] = "$result[fname]";
     $_SESSION["lname"] = "$result[lname]";
     $_SESSION["date_of_birth"] = "$result[date_of_birth]";
-    $_SESSION["email"] = "$result[email]";
-    $_SESSION["password"] = "$result[password]";
+    $_SESSION["appemail"] = "$result[email]";
+    $_SESSION["apppassword"] = "$result[password]";
     $_SESSION["gender"] = "$result[gender]";
     $_SESSION["user_name"] = "$result[user_name]";
     $_SESSION["country"] = "$result[country]";
@@ -39,9 +39,9 @@ if ($g_password == $result['password']) {
     var_dump($result);
 
 
-    // header("location:profile.php?email=$g_email");
+    header("location:applicantProfile.php?email=$g_email");
 } else {
-    // header("location:sign-in-sendreq.php?email=$g_email&error=1");
+    header("location:sign-in-reqapp.php?email=$g_email&error=1");
 }
 
 $connection->close();

@@ -1,8 +1,8 @@
 <?php
 require("inc/connection.php");
-
-$u = "info@techinnovations.com";
-$p = "techpass123";
+session_start();
+$u = $_SESSION["email"];
+$p = $_SESSION["password"];
 
 $dataID;
 $dataFirstName;
@@ -54,61 +54,133 @@ $connection->close();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo $dataOrgName . " Profile"; ?></title>
   <link rel="stylesheet" href="css/bootstrap.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+
+    .profile .container {
+      padding-top: 30px;
+      padding-bottom: 100px;
+      margin-top: 50px;
+      background-color: white
+    }
+
+    /* .user-image {
+            di
+            justify-content: center;
+        } */
+
+    .profile .user-image img {
+      display: block;
+      margin: 0 auto;
+      width: 10%;
+      border: 1px solid #9F78FF;
+      border-radius: 50%;
+    }
+
+    .info {
+      padding: 80px 0;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .box-info {
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      height: 70px;
+      justify-content: center;
+      align-items: center;
+
+
+    }
+
+
+
+    .box-info .key {
+      width: 35%;
+
+
+      text-align: center;
+      align-self: center;
+      padding: 20px 0;
+      font-weight: bolder;
+    }
+
+    .box-info .value {
+      width: 35%;
+      text-align: center;
+      background-color: #C5AEFF;
+      padding: 13px;
+      font-size: larger;
+    }
+
+    .
+  </style>
 </head>
 
 <body>
-  <section style="background-color: #eee;">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="card mb-4">
-            <div class="card-body text-center">
-              <h5 class="my-3"><?php echo $dataOrgName  ?></h5>
-              <img src="<?php echo $datapic ?>" alt="">
-              <p class="text-muted mb-1"><?php echo $dataOrgName ?></p>
-              <p class="text-muted mb-4"><?php echo $dataLocation ?></p>
-              <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-primary">Follow</button>
-                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-              </div>
-            </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light fw-bold">SkillHive</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <!-- <a class="nav-link active" aria-current="page" href="">Home</a> -->
+            <a class="nav-link text-light">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light">Profile</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <div class="profile">
+    <div class="container">
+      <div class="user-image">
+        <img src="<?php echo $datapic ?>" alt="">
+      </div>
+      <div class="user">
+        <div class="info">
+          <div class="box-info">
+            <p class="key bg-primary">Name</p>
+            <p id="name" class="value bg-body-secondary"><?php echo $dataOrgName ?></p>
           </div>
 
-          <div class="col-lg-8">
-            <div class="card mb-4">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Full Name</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $dataOrgName ?></p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $dataEmail ?></p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Phone</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $dataLocation ?></p>
-                  </div>
-                </div>
-                <hr>
-
-                <hr>
-
-
-              </div>
-            </div>
+          <div class="box-info">
+            <p class="key bg-primary">Email</p>
+            <p id="email" class="value bg-body-secondary"><?php echo $dataEmail ?></p>
           </div>
-  </section>
+          <div class="box-info">
+            <p class="key bg-primary">Date Of Establish</p>
+            <p id="tel" class="value bg-body-secondary"><?php echo $dataDateOfest ?></p>
+          </div>
+
+          <div class="box-info">
+            <p class="key bg-primary">Location</p>
+            <p id="tel" class="value bg-body-secondary"><?php echo $dataLocation ?></p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
 </body>
 
 </html>
