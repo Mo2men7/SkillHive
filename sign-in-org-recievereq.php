@@ -18,6 +18,7 @@ var_dump($result);
 echo "</pre>";
 var_dump("$result[id_org]");
 //check password 
+//check password 
 if ($g_password == $result['password']) {
     // session start
     $_SESSION["id_org"] = "$result[id_org]";
