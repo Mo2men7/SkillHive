@@ -274,22 +274,29 @@
     <div class="form-container sign-up-container">
       <!-- sign up start-->
       <form action="storing.php" method="post">
-        <h4>Create Account</h4>
-
-
 
         <div class="d-flex gap-2">
-          <input type="text" id="firstName" name="firstname" placeholder="First Name" class="" />
-          <input type="text" id="lastName" name="lastname" placeholder="Last Name" class="" />
+          <input type="file" name="pic"/>
+          <input type="text" id="job_title" name="job_title" placeholder="Job Title"/>
+        </div>
+
+        <div class="d-flex gap-2">
+          <input type="text" id="firstName" name="firstname" placeholder="First Name"/>
+          <input type="text" id="lastName" name="lastname" placeholder="Last Name"/>
         </div>
 
         <div class="d-flex gap-2">
           <div class="d-flex w-100 ">
-            <!-- <label for="birthdayDate" class="form-label m-4">Country</label> -->
             <select name="country" id="country" class="w-100" style="background-color: #eee;border: none;padding: 12px 35px; margin: 8px 0;width:100%">
               <option value="Egypt">Egypt</option>
-              <option value="Egypt2">Egypt2</option>
-              <option value="Egypt3">Egypt3</option>
+              <option value="Palestine">Palestine</option>
+              <option value="Yemen">Yemen</option>
+              <option value="Sudan">Sudan</option>
+              <option value="Jordan">Jordan</option>
+              <option value="Saudi Arabia">Saudi Arabia</option>
+              <option value="United Arab Emirates">United Arab Emirates</option>
+              <option value="Tunisia">Tunisia</option>
+              <option value="Algeria">Algeria</option>
             </select>
           </div>
 
@@ -309,14 +316,18 @@
 
           </div>
         </div>
-
-        <input type="email" id="emailAddress" placeholder="Email" name="email" class="" />
-        <div class="d-flex align-items-center w-100">
-          <label class="form-label me-3 w-25" for="dateOfBirth">Date of birth</label>
+        <div class="d-flex gap-2">
+          <input type="text" id="Phone" name="phone" placeholder="Phone" class="" />
+          <input type="text" id="Address" class="" placeholder="Address" name="address" />
+        </div>
+        <div class="d-flex gap-2">
+          <input type="email" id="emailAddress" placeholder="Email" name="email"/>
           <input type="date" name="date" class=" w-75">
         </div>
-        <input type="text" id="username" name="username" placeholder="Username" class="" />
-        <input type="password" id="password" class="" placeholder="Password" name="password" />
+        <div class="d-flex gap-2">
+          <input type="text" id="username" name="username" placeholder="Username" class="" />
+          <input type="password" id="password" class="" placeholder="Password" name="password" />
+        </div>
 
 
         <button type="submit">Sign Up</button>
@@ -350,12 +361,12 @@
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
-          <h1>Welcome Back!</h1>
+        <h1>Hello, Talent!</h1>
           <p>To keep connected with us please login with your personal info</p>
           <button class="ghost" id="signIn">Sign In</button>
         </div>
         <div class="overlay-panel overlay-right">
-          <h1>Hello, Friend!</h1>
+          <h1>Welcome Back, Talent!</h1>
           <p>Enter your personal details and start journey with us</p>
           <button class="ghost" id="signUp">Sign Up</button>
         </div>
