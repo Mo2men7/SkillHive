@@ -10,7 +10,7 @@ require_once "inc/function.inc.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="./assets/img/favicon.ico" rel="icon">
+    <link href="./assets/am/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,14 +22,14 @@ require_once "inc/function.inc.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="./assets/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="./assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="./assets/am/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="./assets/am/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/am/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="./assets/css/style.css" rel="stylesheet">
+    <link href="./assets/am/css/style.css" rel="stylesheet">
     <script defer src="./js/jobsorg.js"></script>
     <link rel="stylesheet" href="./css/jobs.css">
     <style>
