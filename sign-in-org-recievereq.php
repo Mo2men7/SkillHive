@@ -28,6 +28,7 @@ if ($g_password == $result['password']) {
     $_SESSION["password"] = "$result[password]";
     $_SESSION["org_description"] = "$result[org_description]";
     $_SESSION["location"] = "$result[location]";
+    $_SESSION["org_pic"] = "$result[org_pic]";
     // session end
     //relocation start 
     header("location:profileorg.php?email=$g_email");
