@@ -32,9 +32,37 @@ require_once "inc/function.inc.php";
     <link href="./assets/am/css/style.css" rel="stylesheet">
     <script defer src="./js/jobsorg.js"></script>
     <link rel="stylesheet" href="./css/jobs.css">
-    <style>
-
-    </style>
+    
+    <link rel="stylesheet" href="available.css">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <script src="bootstrap/js/bootstrap.bundle.js"></script>
+</head>
+<style>
+  .job-item {
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition: .3s;
+    background-color: white;
+  }
+  
+  .job-item:hover {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    border-color: rgba(0, 0, 0, .08);
+    transform: scale(1.015, 1.015);
+  }
+</style>
 </head>
 
 <body>
@@ -72,7 +100,7 @@ require_once "inc/function.inc.php";
                 </a>
             </li>
         </ul>
-        <div class="tab-content overflow-auto ms-4 mt-4 ">
+        <div id="jobsandcat" class="tab-content overflow-auto ms-4 mt-4 " style="width:100vw;">
         <div id="tab-1" class="tab-pane fade show p-0 active">
             <?php
             if (count($_SESSION["jobs"]) == 0)

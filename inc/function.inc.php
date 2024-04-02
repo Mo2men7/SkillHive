@@ -39,7 +39,7 @@ function getCategory($connect)
 function ShowJob($connect, $value)
 {
     if ($value["job_status"] == "c") {
-        $colorOnStatus = "fa-solid fa-xmark";
+        $colorOnStatus = "fa-solid fa-xmark text-danger";
         $jobStatus = "Closed";
     } else {
         $colorOnStatus = "fa fa-check";
@@ -51,7 +51,7 @@ function ShowJob($connect, $value)
         <div class='col-sm-12 col-md-8 d-flex align-items-center'>
             <div class='text-start ps-4'>
                 <h5 class='mb-3'>" . $value["job_title"] . "</h5>
-                <p>" . $value["job_description"] . "</p>
+                <p class='description'>" . $value["job_description"] . "</p>
                 <span class='text-truncate me-3'><i class='fa-solid fa-layer-group text-primary me-2'></i>" . $value["category"] . "</span>
                 <span class='text-truncate me-3'><i class='" . $colorOnStatus . " text-primary me-3'></i>" . $jobStatus . "</span>
                 <span class='text-truncate me-0'><i class='far fa-money-bill-alt text-primary me-2'></i>$" . $value["salary"] . "</span>
@@ -60,13 +60,13 @@ function ShowJob($connect, $value)
         <div class='col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center'>
             <div class='d-flex mb-3'>";
     if (isset($value["applicants"])) {
-        $div .= "<a href='' class='btn btn-light btn-square me-3' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'><i class='fa-regular fa-user'></i> " . count($value["applicants"]) . "</a>";
+        $div .= "<a href='' class='btn btn-light btn-square me-3 rounded-0' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'><i class='fa-regular fa-user'></i> " . count($value["applicants"]) . "</a>";
     } else
-        $div .= "<a href='' class='btn btn-light btn-square me-3' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'><i class='fa-regular fa-user'></i>0</a>";
+        $div .= "<a href='' class='btn btn-light btn-square me-3 rounded-0' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'><i class='fa-regular fa-user'></i>0</a>";
 
     // <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
     // $div .= "<button class='btn btn-outline-" . $colorOnStatus . "' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "Modal' >Edit</button>";
-    $div .= "<a class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "Modal' >Edit</a>
+    $div .= "<a class='btn btn-primary rounded-0' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "Modal' >Edit</a>
             </div>
             <small class='text-truncate'><i class='far fa-calendar-alt text-primary me-2'></i>DeadLine: " . $value["expire_date"] . "</small>
         </div>
@@ -179,8 +179,8 @@ function ModalToEdit($connect, $value)
     
         </div>
         <div class='modal-footer'>
-        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-    <input type='submit' class='btn btn-primary' value='Edit' name='edit'>
+        <button type='button' class='btn btn-secondary rounded-0' data-bs-dismiss='modal'>Close</button>
+    <input type='submit' class='btn btn-primary rounded-0' value='Edit' name='edit'>
           </div>
           </form>
       </div>
@@ -237,8 +237,8 @@ function ModalToList($connect, $value)
         $div .= "
         </div>
         <div class='modal-footer'>
-            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-            <button type='submit' class='btn btn-primary' name='submit' value='" . $value["id_job"] . "'>Save Changes</button>
+            <button type='button' class='btn btn-secondary rounded-0' data-bs-dismiss='modal'>Close</button>
+            <button type='submit' class='btn btn-primary rounded-0' name='submit' value='" . $value["id_job"] . "'>Save Changes</button>
         </div>
     </div>
 </div>
