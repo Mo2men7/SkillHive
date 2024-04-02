@@ -13,7 +13,6 @@ var_dump($g_password);
 echo "<br>";
 $data = $connection->query("SELECT * FROM organization where email='$g_email'");
 $result = $data->fetch_assoc();
-var_dump($data->fetch_assoc());
 echo "<br><br><Br>";
 echo "<pre>";
 var_dump($result);
