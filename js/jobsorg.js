@@ -12,14 +12,14 @@ for (const button of filterButtons) {
         if (this.innerText.trim().split(" ")[0]=="All")
         {
             for (const div of OpenedJobs)
-            div.style.display="flex";
+            div.style.display="block";
             for (const div of ClosedJobs)
-            div.style.display="flex";
+            div.style.display="block";
         }
         else if (this.innerText.trim().split(" ")[0]=="Opened")
         {
             for (const div of OpenedJobs)
-            div.style.display="flex";
+            div.style.display="block";
             for (const div of ClosedJobs)
             div.style.display="none";
         }
@@ -28,13 +28,13 @@ for (const button of filterButtons) {
             for (const div of OpenedJobs)
             div.style.display="none";
             for (const div of ClosedJobs)
-            div.style.display="flex";
+            div.style.display="block";
         }
         for (const deactive of filterButtons)
         {
-            deactive.classList.remove("active","text-dark")
+            deactive.classList.remove("activeIt")
         }
-        this.classList.add("active","text-dark")
+        this.classList.add("activeIt")
         // this.classList.add()
     }
     )

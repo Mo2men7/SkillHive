@@ -7,7 +7,7 @@ function jobs($connect, $org_id)
     // require_once "connect.php";
     $stmjob = $connect->prepare("SELECT jobs.* ,category.category FROM jobs inner join category on jobs.id_category = category.id_category where jobs.org_id= ? ORDER BY jobs.publish_date DESC");
     // echo "$org_id";
-    $stmjob->bind_param('i',$org_id);
+    $stmjob->bind_param('i', $org_id);
     $stmjob->execute();
     // $stmt->bind_result($district);
 
@@ -17,7 +17,8 @@ function jobs($connect, $org_id)
         $fixingId[$job["id_job"]] = $job;
         $stmapp = $connect->prepare("SELECT applicant.* , job_app.* from applicant inner join job_app on applicant.id_app=job_app.id_app where job_app.id_job=?; ");
 
-        $stmapp->bind_param('i',
+        $stmapp->bind_param(
+            'i',
             $job["id_job"]
         );
         $stmapp->execute();
@@ -38,47 +39,73 @@ function getCategory($connect)
 function ShowJob($connect, $value)
 {
     if ($value["job_status"] == "c") {
-        $colorOnStatus = "danger";
+        $colorOnStatus = "fa-solid fa-xmark";
         $jobStatus = "Closed";
     } else {
-        $colorOnStatus = "success";
+        $colorOnStatus = "fa fa-check";
         $jobStatus = "Opened";
     }
 
-
-    $div = "<div class='eachjob ".$jobStatus." card border-" . $colorOnStatus . " mb-3 my-4 '>
-    <div class='card-header d-flex justify-content-between align-items-baseline'>
-    <div class='d-flex  align-items-center'>
-    <span class='fw-bold fs-4'>" . $value["job_title"] . "</span>
-    
-    <span class=' badge text-bg-" . $colorOnStatus . " fs-7 ms-2'>" . $jobStatus . "</span>
-    
-    </div>
-    <div  class='text-body-secondary fs-20'>Published on " . $value["publish_date"] . "</div>
-    </div>
-    <div class='card-body'>
-    <div class='card-title fs-5'>" . $value["job_description"] . "</div>
-    <span class='card-text fs-5 fw-bold'> Salary :" . $value["salary"] . "$</span>
-    <div>
-    <span class='badge text-bg-secondary me-2 fs-6'>" . $value["category"] . "</span>
-    </div>";
-    $div .= "</div>";
-
-    $div .= "<div class='card-footer d-flex justify-content-between align-items-baseline'>";
-
-
-    $div .= "<button class='btn btn-outline-" . $colorOnStatus . "' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "Modal' >Edit</button>";
-
-    $div .= " <div class='text-body-secondary fs-20'>
-    Expired on 
-    <span class='text-danger me-3'>" . $value["expire_date"] . "</span>";
+    $div = "<div class='eachjob " . $jobStatus . " job-item p-4 mb-4'>
+    <div class='row g-4'>
+        <div class='col-sm-12 col-md-8 d-flex align-items-center'>
+            <div class='text-start ps-4'>
+                <h5 class='mb-3'>" . $value["job_title"] . "</h5>
+                <p>" . $value["job_description"] . "</p>
+                <span class='text-truncate me-3'><i class='fa-solid fa-layer-group text-primary me-2'></i>" . $value["category"] . "</span>
+                <span class='text-truncate me-3'><i class='" . $colorOnStatus . " text-primary me-3'></i>" . $jobStatus . "</span>
+                <span class='text-truncate me-0'><i class='far fa-money-bill-alt text-primary me-2'></i>$" . $value["salary"] . "</span>
+            </div>
+        </div>
+        <div class='col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center'>
+            <div class='d-flex mb-3'>";
     if (isset($value["applicants"])) {
-        $div .= "<a href='#'class='fa-regular fa-user me-3 text-body-secondary' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'> " . count($value["applicants"]) . "</a></div>";
+        $div .= "<a href='' class='btn btn-light btn-square me-3' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'><i class='fa-regular fa-user'></i> " . count($value["applicants"]) . "</a>";
     } else
-        $div .= "<a a href='#' class='fa-regular fa-user me-3 text-body-secondary' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'>0</a></div>";
+        $div .= "<a href='' class='btn btn-light btn-square me-3' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'><i class='fa-regular fa-user'></i>0</a>";
 
-    $div .= "</div>";
-    $div .= "</div>";
+    // <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
+    // $div .= "<button class='btn btn-outline-" . $colorOnStatus . "' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "Modal' >Edit</button>";
+    $div .= "<a class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "Modal' >Edit</a>
+            </div>
+            <small class='text-truncate'><i class='far fa-calendar-alt text-primary me-2'></i>DeadLine: " . $value["expire_date"] . "</small>
+        </div>
+    </div>
+</div>";
+
+    // $div = "<div class='eachjob ".$jobStatus." card border-" . $colorOnStatus . " mb-3 my-4 '>
+    // <div class='card-header d-flex justify-content-between align-items-baseline'>
+    // <div class='d-flex  align-items-center'>
+    // <span class='fw-bold fs-4'>" . $value["job_title"] . "</span>
+
+    // <span class=' badge text-bg-" . $colorOnStatus . " fs-7 ms-2'>" . $jobStatus . "</span>
+
+    // </div>
+    // <div  class='text-body-secondary fs-20'>Published on " . $value["publish_date"] . "</div>
+    // </div>
+    // <div class='card-body'>
+    // <div class='card-title fs-5'>" . $value["job_description"] . "</div>
+    // <span class='card-text fs-5 fw-bold'> Salary :" . $value["salary"] . "$</span>
+    // <div>
+    // <span class='badge text-bg-secondary me-2 fs-6'>" . $value["category"] . "</span>
+    // </div>";
+    // $div .= "</div>";
+
+    // $div .= "<div class='card-footer d-flex justify-content-between align-items-baseline'>";
+
+
+    // $div .= "<button class='btn btn-outline-" . $colorOnStatus . "' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "Modal' >Edit</button>";
+
+    // $div .= " <div class='text-body-secondary fs-20'>
+    // Expired on 
+    // <span class='text-danger me-3'>" . $value["expire_date"] . "</span>";
+    // if (isset($value["applicants"])) {
+    //     $div .= "<a href='#'class='fa-regular fa-user me-3 text-body-secondary' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'> " . count($value["applicants"]) . "</a></div>";
+    // } else
+    //     $div .= "<a a href='#' class='fa-regular fa-user me-3 text-body-secondary' data-bs-toggle='modal' data-bs-target='#" . $value["id_job"] . "listAppModal'>0</a></div>";
+
+    // $div .= "</div>";
+    // $div .= "</div>";
     return $div;
 }
 
@@ -131,10 +158,10 @@ function ModalToEdit($connect, $value)
             <div class=' col-4 '>";
     if ($value["job_status"] == "o") {
         $div .= "<input type='radio' class='btn-check ' name='job_status' value='o' id='" . $value["id_job"] . "open' autocomplete='off' checked >
-                <label class='btn btn-outline-success' for='" . $value["id_job"] . "open'>Open</label>";
+                <label class='btn btn-outline-primary' for='" . $value["id_job"] . "open'>Open</label>";
     } else {
         $div .= "<input type='radio' class='btn-check ' name='job_status' value='o' id='" . $value["id_job"] . "open' autocomplete='off' >
-                <label class='btn btn-outline-success' for='" . $value["id_job"] . "open'>Open</label>";
+                <label class='btn btn-outline-primary' for='" . $value["id_job"] . "open'>Open</label>";
     }
     $div .= "</div>
             <div class=' col-4 '>";
@@ -153,7 +180,7 @@ function ModalToEdit($connect, $value)
         </div>
         <div class='modal-footer'>
         <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-    <input type='submit' class='btn btn-outline-success' value='Edit' name='edit'>
+    <input type='submit' class='btn btn-primary' value='Edit' name='edit'>
           </div>
           </form>
       </div>
