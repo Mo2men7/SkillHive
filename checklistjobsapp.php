@@ -1,5 +1,5 @@
 <?php
-require ("inc/connection.php");
+require("inc/connection.php");
 session_start();
 $id = $_SESSION["id_app"];
 // $id = 2;
@@ -59,13 +59,6 @@ $connection->close();
     </style>
 </head>
 
-<<<<<<< HEAD
-<?php
-session_start();
-?>
-
-=======
->>>>>>> 0c2b48c369451e5efd9a1c3308686a7daa38f611
 <body style="background:#eee;">
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center mb-5 p-2">
@@ -100,11 +93,6 @@ session_start();
     </header>
     <!-- ======= End Header ======= -->
     <main class="mt-5 pt-5">
-<<<<<<< HEAD
-        <p class="text-center text-black-50"><?php echo 'Here are the jobs you submitted a proposal for'; ?></p>
-        <?php
-
-=======
         <p class="text-center text-black-50">
             <?php echo 'Here are the jobs you submitted a proposal for'; ?>
         </p>
@@ -117,7 +105,6 @@ session_start();
         </div>
 
         <?php
->>>>>>> 0c2b48c369451e5efd9a1c3308686a7daa38f611
         if ($result->num_rows) {
             if ($result) {
                 $row2 = mysqli_fetch_assoc($res);
@@ -133,57 +120,6 @@ session_start();
                     } elseif ($row["app_status"] == "r") {
                         $appstatus = "Rejected";
                     }
-<<<<<<< HEAD
-                    // $row2 = mysqli_fetch_assoc($res);
-                    $row3 = mysqli_fetch_assoc($res2);
-                    echo '<div class="job-item p-4 mb-4">';
-                    // echo "<pre>";
-                    // print_r($row);
-                    // echo "</pre>";
-                    // echo "<pre>";
-                    // var_dump($row);
-                    // echo "</pre>";
-                    // echo "<pre>";
-                    // var_dump($row2);
-                    // echo "<pre>";
-                    // echo "<pre>";
-                    // var_dump($row3);
-                    // echo "</pre>";
-                    echo '<div class="row g-4">';
-                    echo '<div class="col-sm-12 col-md-8 d-flex align-items-center">';
-                    // if (($row['org_pic'])) {
-                    // echo '<img class="flex-shrink-0 img-fluid border rounded" src="'.$row['org_pic'].'" alt="" style="width: 80px; height: 80px;">';
-                    // }
-                    echo '<div class="text-start ps-4">';
-                    echo '<h4 class="mb-3">' . $row3["job_title"] . '</h4>';
-                    // echo '<span class="text-truncate me-3"><i class="fa-solid fa-list text-primary me-2"></i>'.$row['category'].'</span>';
-                    $status;
-                    if ($row["app_status"] == "r") {
-                        echo '<span class="text-truncate me-3"><i class="fa-solid fa-xmark text-primary me-2"></i>' . $appstatus . '</span>';
-                    } else if ($row["app_status"] == "a") {
-                        echo '<span class="text-truncate me-3"><i class="fa-solid fa-check text-primary me-2"></i>' . $appstatus . '</span>';
-                    } else if ($row["app_status"] == "p") {
-                        echo '<span class="text-truncate me-3"><i class="fa-solid fa-spinner text-primary me-2"></i>' . $appstatus . '</span>';
-                    } else if ($row["app_status"] == "s") {
-                        echo '<span class="text-truncate me-3"><i class="fa-solid fa-arrow-up-short-wide text-primary me-2"></i>' . $appstatus . '</span>';
-                    }
-                    // echo '<span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$'.$row['salary'].'</span>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '<div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">';
-                    echo '<div class="d-flex mb-3">';
-                    // echo '<a class="btn btn-primary rounded-0" href="applyJob-send.php?job-id=' . $row['id_job'] . '">Apply Now</a>';
-                    echo '</div>';
-                    echo '<small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Application Date : ' . $row["app_date"] . '</small>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-
-                    // ...and so on
-                }
-            } else {
-                // Query failed
-=======
 
                     $row3 = mysqli_fetch_assoc($res2);
                     echo "<div class='job-item $appstatus p-4 mb-4'>";
@@ -213,16 +149,11 @@ session_start();
                     echo '</div>';
                 }
             } else {
->>>>>>> 0c2b48c369451e5efd9a1c3308686a7daa38f611
                 echo "Error: " . mysqli_error($connection);
             }
         } else {
             echo "<h2 class='text-center'>Nothing here .. yet</h2>";
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> 0c2b48c369451e5efd9a1c3308686a7daa38f611
         ?>
     </main>
 
@@ -233,15 +164,13 @@ session_start();
         job = document.getElementsByClassName("job-item");
         btn = document.getElementsByClassName("btnclick");
         console.log(status)
-        
+
         for (i = 0; i < job.length; i++) {
-            if(status == "All"){
+            if (status == "All") {
                 job[i].style.display = "block";
-            }
-            else if(job[i].classList.contains(status)){
+            } else if (job[i].classList.contains(status)) {
                 job[i].style.display = "block";
-            }
-            else{
+            } else {
                 job[i].style.display = "none";
             }
         }
@@ -252,4 +181,5 @@ session_start();
     }
 </script>
 <script src="assets/js/main.js"></script>
+
 </html>
