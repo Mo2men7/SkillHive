@@ -35,12 +35,14 @@ padding-top: 3vh;
 }
 #jobsandcat{
     background-color:var(--bodyColor) ;
+    
 }
 .eachjob
     {
         background-color: var(--barColor) !important;
         /* margin-left: 5vw; */
         margin-right: 5vw;
+        
     }
 @media screen and (max-width :991px) {
 
@@ -87,7 +89,9 @@ padding-top: 3vh;
     {
         margin-left: 5vw;
         margin-right: 5vw;
+        height : 100vh;
     }
+    
     #catId>li>a>span
     {
         display: none ;
