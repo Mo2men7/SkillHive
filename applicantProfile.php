@@ -38,6 +38,9 @@ if (isset($u) && isset($p)) {
     $dataEmail = $row['email'];
     $dataPassword = $row['password'];
     $dataCountry = $row['country'];
+    $dataphone = $row["phone"];
+    $dataaddress = $row['address'];
+    $jobtitle = $row["job_title"];
   } else {
     echo "Bye!";
   }
@@ -104,7 +107,7 @@ $connection->close();
   </header>
   <!-- ======= End Header ======= -->
 
-  
+
   <section style="background-color: #eee;">
     <div class="container py-5">
       <p class="bg-dark text-light text-center fs-3">Welcome, Talent</p>
@@ -114,8 +117,9 @@ $connection->close();
             <div class="card-body text-center">
               <img src="<?php echo $_SESSION['app_pic'] ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
               <h5 class="my-3"><?php echo $_SESSION["fname"] . " " . $_SESSION["lname"] ?></h5>
-              <p class="text-muted mb-1"><?php echo $_SESSION["job_title"] ?></p>
-              <p class="text-muted mb-4"><?php echo $_SESSION["address"] ?></p>
+              <p class="text-muted mb-4"><?php echo $jobtitle ?></p>
+              <p class="text-muted mb-1"><?php echo $dataaddress ?></p>
+              <p class="text-muted mb-4"><?php echo $dataphone ?></p>
             </div>
           </div>
           <!-- <div class="card mb-4 mb-lg-0">
@@ -162,7 +166,7 @@ $connection->close();
                   <p class="mb-0">Email</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0"><?php echo $_SESSION["appemail"] ?></p>
+                  <p class="text-muted mb-0"><?php echo $dataEmail ?></p>
                 </div>
               </div>
               <hr>
@@ -171,7 +175,7 @@ $connection->close();
                   <p class="mb-0">Phone</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0"><?php echo $_SESSION["phone"] ?></p>
+                  <p class="text-muted mb-0"><?php echo $dataphone ?></p>
                 </div>
               </div>
               <hr>
@@ -180,7 +184,7 @@ $connection->close();
                   <p class="mb-0">Address</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0"><?php echo $_SESSION["address"] ?></p>
+                  <p class="text-muted mb-0"><?php echo $dataaddress ?></p>
                 </div>
               </div>
             </div>
@@ -247,8 +251,8 @@ $connection->close();
       </div>
     </div>
   </section>
-    <!-- ======= Footer ======= -->
-    <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+  <!-- ======= Footer ======= -->
+  <footer class="text-center text-lg-start bg-body-tertiary text-muted">
     <!-- Section: Links  -->
     <section class="">
       <div class="container text-center text-md-start mt-5">
@@ -261,7 +265,7 @@ $connection->close();
               <img src="assets/sh.png" style="width:140px;">
             </h6>
             <p>
-            SkillHive is a freelance website or job portal website as known in common that allows organizations after
+              SkillHive is a freelance website or job portal website as known in common that allows organizations after
               register to post their jobs to get the applicants' attention to it so one of the experts can finish it.
             </p>
           </div>
@@ -294,14 +298,14 @@ $connection->close();
   <!-- End Footer -->
 </body>
 <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
 
 </html>

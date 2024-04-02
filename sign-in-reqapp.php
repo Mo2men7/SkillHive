@@ -17,7 +17,16 @@ $data = $connection->query("SELECT * FROM applicant where email='$g_email'");
 $result = $data->fetch_assoc();
 var_dump($data->fetch_assoc());
 var_dump($result);
-
+$_SESSION["id_app"];
+$_SESSION["fname"];
+$_SESSION["lname"];
+$_SESSION["date_of_birth"];
+$_SESSION["appemail"];
+$_SESSION["apppassword"];
+$_SESSION["gender"];
+$_SESSION["user_name"];
+$_SESSION["country"];
+$_SESSION["app_pic"];
 
 if ($g_password == $result['password']) {
 
@@ -37,7 +46,7 @@ if ($g_password == $result['password']) {
     // var_dump($_SESSION["id_org"]);
     // session end
     //relocation
-    var_dump($result);
+    // var_dump($result);
 
 
     header("location:applicantProfile.php?email=$g_email");
