@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (isset($_SESSION["id_app"]) || isset($_SESSION["id_org"])) {
+  if (isset($_SESSION["id_app"]))
+    header("location: applicantProfile.php");
+  else
+    header("location: profileorg.php");
+} else {
+  session_destroy();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

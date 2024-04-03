@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once "./inc/connection.php";
+require_once "./inc/function.inc.php";
+
 var_dump($_REQUEST);
 echo "<br>";
 $g_email = $_REQUEST['email'];
@@ -29,6 +31,7 @@ if ($g_password == $result['password']) {
     $_SESSION["org_description"] = "$result[org_description]";
     $_SESSION["location"] = "$result[location]";
     $_SESSION["org_pic"] = "$result[org_pic]";
+    $_SESSION["jobs"] = jobs($connection, $_SESSION["id_org"]);
     // session end
     //relocation start 
     header("location:profileorg.php?email=$g_email");

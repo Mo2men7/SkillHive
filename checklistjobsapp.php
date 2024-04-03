@@ -1,6 +1,6 @@
 <?php
-require("inc/connection.php");
-session_start();
+
+require_once "header.php";
 $id = $_SESSION["id_app"];
 // $id = 2;
 $appstatus;
@@ -20,26 +20,7 @@ if (isset($id)) {
 }
 $connection->close();
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Last jobs</title>
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <!-- vencdors -->
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <script src="bootstrap/js/bootstrap.bundle.js"></script>
     <style>
         .job-item {
             margin-left: auto;
@@ -57,40 +38,8 @@ $connection->close();
             transform: scale(1.015, 1.015);
         }
     </style>
-</head>
 
-<body style="background:#eee;">
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center mb-5 p-2">
-        <div class="container d-flex align-items-center justify-content-between">
-            <div class="logo">
-                <a href="index.php"><img src="assets/sh.png" style="width: 180px;"></a>
-            </div>
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="nav-link scrollto" href="jobsData.php">Jobs</a></li>
-                    <li><a class="nav-link scrollto" href="checklistjobsapp.php">Last Projects</a></li>
-                    <li class="ms-2"><a style="cursor:default;">
-                            <?php echo $_SESSION['fname'] ?>
-                        </a></li>
-                    <li><a class="nav-link scrollto" href="applicantProfile.php">
-                            <img src="<?php echo $_SESSION['app_pic'] ?>" class="rounded-circle" style="width:40px;">
-                        </a></li>
-                    <li><a href="jobsData.php?logout=1" class="text-danger text-center" style="width:fit-content;">
-                            <i class="fa-solid fa-circle-right fs-5 me-2"></i> Logout
-                            <?php
-                            if (isset($_GET['logout']) && $_GET['logout'] == 1) {
-                                session_destroy();
-                                header('Location:index.php');
-                            }
-                            ?>
-                        </a></li>
-                </ul>
-                <i class="fa-solid fa-bars mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
 
-        </div>
-    </header>
     <!-- ======= End Header ======= -->
     <main class="mt-5 pt-5">
         <p class="text-center text-black-50">

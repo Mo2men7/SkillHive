@@ -66,14 +66,9 @@ $categoryData = $connection->query("select * from category");
           <li><a class="nav-link scrollto" href="applicantProfile.php">
               <img src="<?php echo $_SESSION['app_pic'] ?>" class="rounded-circle" style="width:40px;">
             </a></li>
-          <li><a href="jobsData.php?logout=1" class="text-danger text-center" style="width:fit-content;">
+          <li><a href="./inc/logout.php" class="text-danger text-center" style="width:fit-content;">
               <i class="fa-solid fa-circle-right fs-5 me-2"></i> Logout
-              <?php
-              if (isset($_GET['logout']) && $_GET['logout'] == 1) {
-                session_destroy();
-                header('Location:index.php');
-              }
-              ?>
+              
             </a></li>
         </ul>
         <i class="fa-solid fa-bars mobile-nav-toggle"></i>

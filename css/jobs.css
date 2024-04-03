@@ -23,7 +23,7 @@ padding-top: 3vh;
 }
 
 #catId {
-    height: 101vh;
+    height: 90vh;
     background-color:var(--barColor) ;
 
 }
@@ -35,7 +35,8 @@ padding-top: 3vh;
 }
 #jobsandcat{
     background-color:var(--bodyColor) ;
-    
+    margin-top: 10vh;
+    height:90vh;
 }
 .eachjob
     {
@@ -44,7 +45,7 @@ padding-top: 3vh;
         margin-right: 5vw;
         
     }
-@media screen and (max-width :991px) {
+@media screen and (max-width :1000px) {
 
     #catId {
         flex-direction: row;
@@ -69,6 +70,7 @@ padding-top: 3vh;
         flex-direction: column;
         /* border: solid aqua; */
         /* background-color: white !important; */
+        margin-top: 8vh;
 
     }
 
@@ -89,7 +91,7 @@ padding-top: 3vh;
     {
         margin-left: 5vw;
         margin-right: 5vw;
-        height : 100vh;
+        /* height : 100vh; */
     }
     
     #catId>li>a>span

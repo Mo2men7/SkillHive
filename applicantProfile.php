@@ -1,112 +1,54 @@
 <?php
 require("./inc/connection.php");
+require_once "header.php";
+// $u = $_SESSION["appemail"];
+// $p = $_SESSION["apppassword"];
 
-session_start();
-$u = $_SESSION["appemail"];
-$p = $_SESSION["apppassword"];
 
-
-$dataID;
-$dataFirstName;
-$dataLastName;
-$dataUserName;
-$dataDateOfBirth;
-$dataGender;
-$dataEmail;
-$dataPassword;
-$dataCountry;
+// $dataID;
+// $dataFirstName;
+// $dataLastName;
+// $dataUserName;
+// $dataDateOfBirth;
+// $dataGender;
+// $dataEmail;
+// $dataPassword;
+// $dataCountry;
 
 // if(isset($_POST['username']) && isset($_POST['password'])) {
-if (isset($u) && isset($p)) {
-  $username = mysqli_real_escape_string($connection, $u);
-  $password = mysqli_real_escape_string($connection, $p);
+// if (isset($u) && isset($p)) {
+//   $username = mysqli_real_escape_string($connection, $u);
+//   $password = mysqli_real_escape_string($connection, $p);
 
-  //the query statement
-  $query = "SELECT * FROM applicant WHERE email='$username' AND password='$password'";
-  //execute SQL queries on the MySQL database
-  $result = mysqli_query($connection, $query);
+//   //the query statement
+//   $query = "SELECT * FROM applicant WHERE email='$username' AND password='$password'";
+//   //execute SQL queries on the MySQL database
+//   $result = mysqli_query($connection, $query);
 
-  if (mysqli_num_rows($result) > 0) {
-    // getting the row of the target data
-    $row = mysqli_fetch_assoc($result);
-    $dataID = $row['id_app'];
-    $dataFirstName = $row['fname'];
-    $dataLastName = $row['lname'];
-    $dataUserName = $row['user_name'];
-    $dataDateOfBirth = $row['date_of_birth'];
-    $dataGender = $row['gender'];
-    $dataEmail = $row['email'];
-    $dataPassword = $row['password'];
-    $dataCountry = $row['country'];
-    $dataphone = $row["phone"];
-    $dataaddress = $row['address'];
-    $jobtitle = $row["job_title"];
-  } else {
-    echo "Bye!";
-  }
-} else {
-  header("Location:choose-start.html");
-}
-$connection->close();
+//   if (mysqli_num_rows($result) > 0) {
+//     // getting the row of the target data
+//     $row = mysqli_fetch_assoc($result);
+//     $dataID = $row['id_app'];
+//     $dataFirstName = $row['fname'];
+//     $dataLastName = $row['lname'];
+//     $dataUserName = $row['user_name'];
+//     $dataDateOfBirth = $row['date_of_birth'];
+//     $dataGender = $row['gender'];
+//     $dataEmail = $row['email'];
+//     $dataPassword = $row['password'];
+//     $dataCountry = $row['country'];
+//     $dataphone = $row["phone"];
+//     $dataaddress = $row['address'];
+//     $jobtitle = $row["job_title"];
+//   } else {
+//     echo "Bye!";
+//   }
+// } else {
+//   header("Location:choose-start.html");
+// }
+// $connection->close();
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo $dataFirstName . " Profile"; ?></title>
-  <link href="assets/css/style.css" rel="stylesheet">
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  <script src="bootstrap/js/bootstrap.bundle.js"></script>
-</head>
-
-<body>
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center mb-5 p-2">
-    <div class="container d-flex align-items-center justify-content-between">
-      <div class="logo">
-        <a href="index.php"><img src="assets/sh.png" style="width: 180px;"></a>
-      </div>
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto" href="jobsData.php">Jobs</a></li>
-          <li><a class="nav-link scrollto" href="checklistjobsapp.php">Last Projects</a></li>
-          <li class="ms-2"><a style="cursor:default;">
-              <?php echo $_SESSION['fname'] ?>
-            </a></li>
-          <li><a class="nav-link scrollto" href="applicantProfile.php">
-              <img src="<?php echo $_SESSION['app_pic'] ?>" class="rounded-circle" style="width:40px;">
-            </a></li>
-          <li><a href="jobsData.php?logout=1" class="text-danger text-center" style="width:fit-content;">
-              <i class="fa-solid fa-circle-right fs-5 me-2"></i> Logout
-              <?php
-              if (isset($_GET['logout']) && $_GET['logout'] == 1) {
-                session_destroy();
-                header('Location:index.php');
-              }
-              ?>
-            </a></li>
-        </ul>
-        <i class="fa-solid fa-bars mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header>
-  <!-- ======= End Header ======= -->
-
 
   <section style="background-color: #eee;">
     <div class="container py-5">
@@ -117,9 +59,9 @@ $connection->close();
             <div class="card-body text-center">
               <img src="<?php echo $_SESSION['app_pic'] ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
               <h5 class="my-3"><?php echo $_SESSION["fname"] . " " . $_SESSION["lname"] ?></h5>
-              <p class="text-muted mb-4"><?php echo $jobtitle ?></p>
-              <p class="text-muted mb-1"><?php echo $dataaddress ?></p>
-              <p class="text-muted mb-4"><?php echo $dataphone ?></p>
+              <p class="text-muted mb-4"><?php echo $_SESSION["job_title"] ?></p>
+              <p class="text-muted mb-1"><?php echo $_SESSION["address"] ?></p>
+              <p class="text-muted mb-4"><?php echo  $_SESSION["phone"]  ?></p>
             </div>
           </div>
           <!-- <div class="card mb-4 mb-lg-0">
@@ -166,7 +108,7 @@ $connection->close();
                   <p class="mb-0">Email</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0"><?php echo $dataEmail ?></p>
+                  <p class="text-muted mb-0"><?php echo $_SESSION["email"] ?></p>
                 </div>
               </div>
               <hr>
@@ -175,7 +117,7 @@ $connection->close();
                   <p class="mb-0">Phone</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0"><?php echo $dataphone ?></p>
+                  <p class="text-muted mb-0"><?php echo $_SESSION["phone"] ?></p>
                 </div>
               </div>
               <hr>
@@ -184,7 +126,7 @@ $connection->close();
                   <p class="mb-0">Address</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0"><?php echo $dataaddress ?></p>
+                  <p class="text-muted mb-0"><?php echo $_SESSION["address"] ?></p>
                 </div>
               </div>
             </div>

@@ -2,53 +2,7 @@
 require_once "header.php";
 require_once "inc/function.inc.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="./assets/am/img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="./assets/am/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="./assets/am/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="./assets/am/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="./assets/am/css/style.css" rel="stylesheet">
-    <script defer src="./js/jobsorg.js"></script>
-    <link rel="stylesheet" href="./css/jobs.css">
-    
-    <link rel="stylesheet" href="available.css">
-  <link href="assets/css/style.css" rel="stylesheet">
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  <script src="bootstrap/js/bootstrap.bundle.js"></script>
-</head>
 <style>
   .job-item {
     border: 1px solid transparent;
@@ -63,12 +17,9 @@ require_once "inc/function.inc.php";
     transform: scale(1.015, 1.015);
   }
 </style>
-</head>
-
-<body>
 
 
-    <div id="jobsandcat" class="d-flex overflow-hidden" style="height:100vh">
+    <div id="jobsandcat" class="d-flex overflow-hidden" style="height:90vh">
 
         <ul id="catId" class="nav nav-tabs flex-column col-2 align-items-center justify-content-around ">
             <li class="nav-item ms-5 ">

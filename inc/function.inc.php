@@ -1,7 +1,7 @@
 <?php
 
 require_once "connection.php";
-$_SESSION["jobs"] = jobs($connection, $_SESSION["id_org"]);
+
 function jobs($connect, $org_id)
 {
     // require_once "connect.php";
