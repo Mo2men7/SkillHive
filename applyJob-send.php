@@ -27,8 +27,9 @@
     <?php
     session_start();
     require_once "./inc/connection.php";
+    $appid=$_SESSION['id_app'];
     $jobid = $_REQUEST['job-id'];
-    $data1 = $connection->query("SELECT * FROM applicant where id_app='1'");
+    $data1 = $connection->query("SELECT * FROM applicant where id_app='$appid'");
     $user_info = $data1->fetch_assoc();
     $data2 = $connection->query("SELECT * FROM jobs where id_job='$jobid'");
     $job_info = $data2->fetch_assoc();

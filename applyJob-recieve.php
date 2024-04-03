@@ -176,17 +176,18 @@ if ($cv_value != null && $phone_number != null && preg_match($pattern, $phone_nu
         INSERT INTO job_app (id_app ,id_job,app_status,app_date,cv_path,phone)
         VALUES ('$id_app','$id_job','$app_status',CURDATE(),'$cv_path','$phone_number')
         ");
-            header("location:jobsData.php");
+        header("Location: jobs.php");
         
     }
 } else {
     // Handle the case where input data is not valid
 }
-
+// header("Location: jobs.php");
 // $data->fetch_assoc();
 $connection->close();
 
-
+header("Location: jobs.php");
+// header("location:jobsData.php")
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

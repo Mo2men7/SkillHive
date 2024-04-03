@@ -1,6 +1,7 @@
 <?php
 require_once "header.php";
 require_once "inc/function.inc.php";
+$_SESSION['jobs']=jobs($connection, $_SESSION["id_org"])
 ?>
 
 <style>

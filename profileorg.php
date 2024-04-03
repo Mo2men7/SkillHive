@@ -7,7 +7,8 @@ require_once "header.php";
 // echo "</pre>";
 
 // exit();
-
+require_once "inc/function.inc.php";
+$_SESSION['jobs']=jobs($connection, $_SESSION["id_org"])
 ?>
 
   <section style="background-color: #eee;">
