@@ -36,19 +36,19 @@
           <!-- job title -->
           <div class="form-group">
             <label for="">Job Title</label>
-            <input type="text" class="form-control rounded shadow py-2 " placeholder="type job title" name="job_title">
+            <input type="text" class="form-control rounded shadow py-2 " placeholder="type job title" name="job_title" required>
           </div>
           <br>
           <!-- description -->
           <div class="form-group">
             <label for="">Description</label>
-            <textarea class="form-control rounded shadow py-2 " placeholder="type job description" name="job_description" rows="4" cols="50"></textarea>
+            <textarea class="form-control rounded shadow py-2 " placeholder="type job description" name="job_description" rows="4" cols="50" required></textarea>
           </div>
           <br>
           <!-- salary -->
           <div class="form-group">
             <label for="">Salary</label>
-            <input class="form-control rounded shadow py-2" type="number" placeholder="type The estimated salary by $" name="salary" min="0">
+            <input class="form-control rounded shadow py-2" type="number" placeholder="type The estimated salary by $" name="salary" min="0" required>
           </div>
           <br>
           <!-- category -->
@@ -82,7 +82,7 @@
           <br>
           <div class="form-group">
             <label for="">Expire date</label>
-            <input class="form-control rounded shadow py-2" type="date" name="expire_date" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>">
+            <input class="form-control rounded shadow py-2" type="date" name="expire_date" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" required>
           </div>
           <br>
       </div>

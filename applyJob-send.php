@@ -69,7 +69,7 @@
                     <!-- name -->
                     <div class="form-group">
                         <label for="">Name</label>
-                        <input type="text" class="form-control rounded shadow py-2" name="name" value="<?php echo $user_info['fname'] . " " . $user_info['lname']; ?>" readonly>
+                        <input type="text" class="form-control rounded shadow py-2" name="name" value="<?php echo $user_info['fname'] . " " . $user_info['lname']; ?>" readonly >
                     </div>
                     <br>
                     <!-- email -->
