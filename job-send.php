@@ -73,11 +73,6 @@
 
               ?>
             </select>
-            <?php
-              // $id_category=$row['id_category'];
-              // var_dump('jjjjj');
-              var_dump( $id_category);
-            ?>
           </div>
 
           <?php

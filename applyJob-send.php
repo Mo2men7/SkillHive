@@ -28,7 +28,6 @@
     session_start();
     require_once "./inc/connection.php";
     $jobid = $_REQUEST['job-id'];
-    $orgid;
     $data1 = $connection->query("SELECT * FROM applicant where id_app='1'");
     $user_info = $data1->fetch_assoc();
     $data2 = $connection->query("SELECT * FROM jobs where id_job='$jobid'");
