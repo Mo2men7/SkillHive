@@ -1,59 +1,6 @@
 <?php
-session_start();
+require_once "header.php";
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<!-- navbar links start-->
-<link rel="stylesheet" href="available.css">
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  <script src="bootstrap/js/bootstrap.bundle.js"></script>
-  <!-- navbar links end-->
-</head>
-<body>
-    <!-- navbar start-->
-
-
-    <header id="header" class="fixed-top d-flex align-items-center mb-5 p-2">
-    <div class="container d-flex align-items-center justify-content-between">
-      <div class="logo">
-        <a href= "index.php"><img src="assets/sh.png" style="width: 180px;"></a>
-      </div>
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto" href="jobsData.php">Jobs</a></li>
-          <li><a class="nav-link scrollto" href="checklistjobsapp.php">Last Projects</a></li>
-          <li class="ms-2"><a style="cursor:default;"><?php echo $_SESSION['fname'] ?></a></li>
-          <li><a class="nav-link scrollto" href="applicantProfile.php">
-            <img src="<?php echo $_SESSION['app_pic'] ?>" class="rounded-circle" style="width:40px;">
-          </a></li>
-          <li><a href="jobsData.php?logout=1" class="text-danger text-center" style="width:fit-content;">
-            <i class="fa-solid fa-circle-right fs-5 me-2"></i> Logout
-            <?php 
-              if(isset($_GET['logout']) && $_GET['logout']==1){
-                session_destroy();
-                header('Location:index.php');
-              }
-            ?>
-          </a></li>
-      </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header>
-
 
     <!-- navbar end-->
 <?php
@@ -84,7 +31,7 @@ if ($cv_value == null) {
 $phone_number = $_REQUEST['phone'];
 $pattern = "/^(010|012|015|011)\d{8}$/"; // Regex pattern 
 if ($phone_number == null) {
-    header("location:applyJob-send.php?&ph_error=1");
+    header("location:applyJob-send.php?job-id=$id_job&ph_error=1");
 } elseif ($phone_number != null && preg_match($pattern, $phone_number)) {
     // echo "OooooooooooooooooooooooooooooooK"; //delete
     //relocation link
@@ -154,7 +101,7 @@ $cv_path = $uploadFile;
 // Check if the data is not null and phone number matches the pattern
 if ($cv_value != null && $phone_number != null && preg_match($pattern, $phone_number)) {
 
-    $checkQuery = "SELECT * FROM job_app WHERE id_app = '$id_app' AND id_job = '$id_job' AND phone = '$phone_number'";
+    $checkQuery = "SELECT * FROM job_app WHERE id_app = '$id_app' AND id_job = '$id_job' ";
     $result = $connection->query($checkQuery);
 
     if ($result->num_rows > 0) {
@@ -176,7 +123,7 @@ if ($cv_value != null && $phone_number != null && preg_match($pattern, $phone_nu
         INSERT INTO job_app (id_app ,id_job,app_status,app_date,cv_path,phone)
         VALUES ('$id_app','$id_job','$app_status',CURDATE(),'$cv_path','$phone_number')
         ");
-        header("Location: jobs.php");
+        header("Location: jobsData.php");
         
     }
 } else {
@@ -185,8 +132,8 @@ if ($cv_value != null && $phone_number != null && preg_match($pattern, $phone_nu
 // header("Location: jobs.php");
 // $data->fetch_assoc();
 $connection->close();
-
-header("Location: jobs.php");
+echo "lol";
+// header("Location: jobs.php");
 // header("location:jobsData.php")
 ?>
 

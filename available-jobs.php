@@ -104,6 +104,8 @@ $categoryData = $connection->query("select * from category");
           <?php
           if ($jobsData->num_rows) {
             foreach ($jobsData as $row) {
+              if ($row['job_status']=="c")
+              continue;
               echo '<div class="job-item p-4 mb-4">';
                 echo '<div class="row g-4">';
                     echo '<div class="col-sm-12 col-md-8 d-flex align-items-center">';

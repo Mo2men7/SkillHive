@@ -34,6 +34,6 @@ $data1 = $connection->query("
 INSERT INTO jobs (job_title ,job_description,org_id,publish_date,expire_date,job_status,salary,id_category)
 VALUES ('$job_title','$job_description','$id_org',CURDATE(),'$expire_date','o','$salary','$id_category')
 ");
-
+header("Location: jobs.php");
 // $data->fetch_assoc();
 $connection->close();

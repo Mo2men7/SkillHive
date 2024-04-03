@@ -8,7 +8,12 @@ require_once "header.php";
 
 // exit();
 require_once "inc/function.inc.php";
-$_SESSION['jobs']=jobs($connection, $_SESSION["id_org"])
+$_SESSION['jobs']=jobs($connection, $_SESSION["id_org"]);
+// echo "<pre>";
+// print_r($_SESSION);
+// print_r();
+// echo "</pre>";
+// exit();
 ?>
 
   <section style="background-color: #eee;">
@@ -60,9 +65,18 @@ $_SESSION['jobs']=jobs($connection, $_SESSION["id_org"])
           <div class="card" style="width: 18rem;">
             <div class="card-body">
               <h6 class="card-subttile">Last Job</h6>
-              <h5 class="card-title"><?php echo max($_SESSION["jobs"])["job_title"]  ?></h5>
-
-              <p class="card-text"><?php echo max($_SESSION["jobs"])["job_description"] ?></p>
+              
+              
+              <h5 class="card-title"><?php  
+              if (count($_SESSION["jobs"])==0)
+              echo "No Jobs Added Yet!";
+            else
+            echo $_SESSION["jobs"][max(array_keys($_SESSION["jobs"]))]["job_title"]  ?></h5>
+              <p class="card-text"><?php 
+              if (count($_SESSION["jobs"])==0)
+              echo "";
+            else
+            echo $_SESSION["jobs"][max(array_keys($_SESSION["jobs"]))]["job_description"] ?></p>
 
             </div>
           </div>

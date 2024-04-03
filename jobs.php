@@ -1,63 +1,65 @@
 <?php
 require_once "header.php";
 require_once "inc/function.inc.php";
-$_SESSION['jobs']=jobs($connection, $_SESSION["id_org"])
+$_SESSION['jobs'] = jobs($connection, $_SESSION["id_org"])
 ?>
 
 <style>
-  .job-item {
-    border: 1px solid transparent;
-    border-radius: 2px;
-    transition: .3s;
-    background-color: white;
-  }
-  
-  .job-item:hover {
-    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
-    border-color: rgba(0, 0, 0, .08);
-    transform: scale(1.015, 1.015);
-  }
+    .job-item {
+        border: 1px solid transparent;
+        border-radius: 2px;
+        transition: .3s;
+        background-color: white;
+    }
+
+    .job-item:hover {
+        box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+        border-color: rgba(0, 0, 0, .08);
+        transform: scale(1.015, 1.015);
+    }
 </style>
 
 
-    <div id="jobsandcat" class="d-flex overflow-hidden" style="height:90vh">
+<div id="jobsandcat" class="d-flex overflow-hidden" style="height:90vh">
 
-        <ul id="catId" class="nav nav-tabs flex-column col-2 align-items-center justify-content-around ">
-            <li class="nav-item ms-5 ">
-                <a class="nav-link border border-0 activeIt text-dark filterIt text-light" aria-current="page" href="#">All Jobs
+    <ul id="catId" class="nav nav-tabs flex-column col-2 align-items-center justify-content-around ">
+        <li class="nav-item ms-5 ">
+            <a class="nav-link border border-0 activeIt text-dark filterIt text-light" aria-current="page" href="#">All Jobs
 
-                    <span class="ms-2 badge text-bg-danger">
-                        <?php echo count($_SESSION["jobs"]) ?>
-                    </span>
+                <span class="ms-2 badge text-bg-danger">
+                    <?php echo count($_SESSION["jobs"]) ?>
+                </span>
 
-                </a>
+            </a>
 
-            </li>
-            <li class="nav-item  ms-5 ">
-                <a class="nav-link border border-0 text-dark filterIt" href="#">Opened
+        </li>
+        <li class="nav-item  ms-5 ">
+            <a class="nav-link border border-0 text-dark filterIt" href="#">Opened
 
-                    <span class="ms-2 badge text-bg-danger">
+                <span class="ms-2 badge text-bg-danger">
 
-                    </span>
+                </span>
 
-                </a>
-            </li>
-            <li class="nav-item ms-5">
-                <a class="nav-link border border-0 text-dark filterIt" href="#">Closed
+            </a>
+        </li>
+        <li class="nav-item ms-5">
+            <a class="nav-link border border-0 text-dark filterIt" href="#">Closed
 
-                    <span class="ms-2 badge text-bg-danger">
+                <span class="ms-2 badge text-bg-danger">
 
-                    </span>
+                </span>
 
-                </a>
-            </li>
-        </ul>
-        <div id="jobsandcat" class="tab-content overflow-auto ms-4 mt-4 " style="width:100vw;">
+            </a>
+        </li>
+    </ul>
+    <div id="jobsandcat" class="tab-content overflow-auto ms-4 mt-4 " style="width:100vw;">
         <div id="tab-1" class="tab-pane fade show p-0 active">
             <?php
-            if (count($_SESSION["jobs"]) == 0)
+            if (count($_SESSION["jobs"]) == 0) {
                 echo "<h1 class='my-5'>You Haven't Posted Any Job Yet!</h1>";
-            else {
+                echo "<h2 class='my-5'>You Can Add one From Here!</h2>";
+                echo "<a class='btn btn-primary rounded-0' href='job-send.php'>Add A Job</a>";
+            } else {
                 foreach ($_SESSION["jobs"] as $value) {
                     // echo "<pre>";
                     // print_r($value);
@@ -132,6 +134,6 @@ $_SESSION['jobs']=jobs($connection, $_SESSION["id_org"])
         </div>
         <!-- // * toast end -->
     </div>
-</body>
+    </body>
 
-</html>
+    </html>

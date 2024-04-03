@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once "header.php";
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply for a job</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
         .bg_title {
             background: linear-gradient(90deg, rgba(0, 116, 255, 1) 0%, rgba(33, 216, 255, 1) 100%);
@@ -21,12 +17,8 @@
             font-weight: 500;
         }
     </style>
-</head>
-
-<body>
     <?php
-    session_start();
-    require_once "./inc/connection.php";
+
     $appid=$_SESSION['id_app'];
     $jobid = $_REQUEST['job-id'];
     $data1 = $connection->query("SELECT * FROM applicant where id_app='$appid'");
@@ -48,9 +40,9 @@
 
 
     <!-- contact info   start-->
-    <div class="container main ">
+    <div class="container main mt-5 pt-5">
 
-        <div class=" border my-3">
+        <div class=" border mt-6">
             <h1 class="text-white text-center bg_title p-4">Confirm Data</h1>
             <div class="p-4">
                 <?php

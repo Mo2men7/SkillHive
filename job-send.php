@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once "header.php";
+$id_category;
+?>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job Form</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
   <style>
     .bg_title {
@@ -16,18 +13,10 @@
       width: 60%;
     }
   </style>
-
-
-</head>
-
-<body>
-<?php
-  $id_category;
-?>
   <!-- sign in header  start-->
-  <div class="container main">
+  <div class="container main mt-5 ">
     <br><br>
-    <div class=" border my-3 ">
+    <div class=" border mt-6">
       <h1 class="text-white text-center bg_title p-4">Create Job</h1>
       <!-- sign in header  end-->
       <div class="p-4">
@@ -53,21 +42,19 @@
           <br>
           <!-- category -->
           <?php
-          session_start();
-          require_once "./inc/connection.php";
           $data = $connection->query("SELECT * FROM category");
 
           ?>
 
           <div class='form-group '>
             <label for='category'>Category</label>
-            <select class='form-control rounded shadow py-2' id='category' name='category' >
+            <select class='form-control rounded shadow py-2' id='category' name='category'>
               <?php
-               $id_category;
+              $id_category;
               // Loop through each row fetched from the database
               while ($row = $data->fetch_assoc()) {
                 // Output an option for each category
-                $id_category= $row['id_category'];
+                $id_category = $row['id_category'];
                 echo "<option value='" . $row['id_category'] . "'>" . $row['category'] . "</option>";
               }
 
@@ -95,6 +82,6 @@
   </div>
   <!-- sign in  form end-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
+  </body>
 
 </html>

@@ -7,6 +7,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="css.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
   <style>
@@ -262,6 +263,17 @@
       color: #3c97bf;
       text-decoration: none;
     }
+    input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+    </style>
   </style>
 </head>
 
@@ -273,16 +285,14 @@
   <div class="container" id="container">
     <div class="form-container sign-up-container">
       <!-- sign up start-->
-      <form action="storing.php" method="post">
+      <form action="storing.php" method="post" enctype="multipart/form-data" >
+
+        <input type="text" id="job_title" name="job_title" placeholder="Job Title" />
+
 
         <div class="d-flex gap-2">
-          <input type="file" name="pic"/>
-          <input type="text" id="job_title" name="job_title" placeholder="Job Title"/>
-        </div>
-
-        <div class="d-flex gap-2">
-          <input type="text" id="firstName" name="firstname" placeholder="First Name"/>
-          <input type="text" id="lastName" name="lastname" placeholder="Last Name"/>
+          <input type="text" id="firstName" name="firstname" placeholder="First Name" />
+          <input type="text" id="lastName" name="lastname" placeholder="Last Name" />
         </div>
 
         <div class="d-flex gap-2">
@@ -321,7 +331,7 @@
           <input type="text" id="Address" class="" placeholder="Address" name="address" />
         </div>
         <div class="d-flex gap-2">
-          <input type="email" id="emailAddress" placeholder="Email" name="email"/>
+          <input type="email" id="emailAddress" placeholder="Email" name="email" />
           <input type="date" name="date" class=" w-75">
         </div>
         <div class="d-flex gap-2">
@@ -330,7 +340,14 @@
         </div>
 
 
-        <button type="submit">Sign Up</button>
+        <div class="d-flex justify-content-between">
+          <label for="file" class="me-2 custom-file-upload">
+            <i class="fa-solid fa-upload" style="color: #3498db"></i> picture
+          </label>
+
+          <input class="custom-file-upload" type="file" id="file" name="file" required style="width:20vw">
+          <button  type="submit" name="sumbit" value="submit">Sign Up</button>
+        </div>
       </form>
       <!-- sign up end-->
     </div>
@@ -361,7 +378,7 @@
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
-        <h1>Hello, Talent!</h1>
+          <h1>Hello, Talent!</h1>
           <p>To keep connected with us please login with your personal info</p>
           <button class="ghost" id="signIn">Sign In</button>
         </div>

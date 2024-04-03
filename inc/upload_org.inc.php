@@ -1,13 +1,13 @@
 <?php
 require_once "connection.php";
-$target_file = $target_dir . basename($_FILES["u_img"]["name"]);
-$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-move_uploaded_file($_FILES["u_img"]["tmp_name"], $target_dir . $imgname);
-$target_dir = "../org_pic/";
+
 $target_file = $target_dir . basename($_FILES["file"]["name"]);
-$uploadOk = 1;
+$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 $imgname =  $connection->insert_id . "." . $imageFileType;
+move_uploaded_file($_FILES["file"]["tmp_name"], $target_dir . $imgname);
+$target_file = $target_dir . basename($_FILES["file"]["name"]);
+$uploadOk = 1;
 
 // Check if image file is a actual image or fake image
 if (isset($_POST["submit"])) {

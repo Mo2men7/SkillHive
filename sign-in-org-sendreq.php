@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
@@ -260,6 +261,16 @@
             color: #3c97bf;
             text-decoration: none;
         }
+        input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
     </style>
 </head>
 
@@ -270,15 +281,34 @@
 
     <!-- navbar end-->
 
-    <div class="container" id="container">
-        <div class="form-container sign-up-container">
+    <div class="container " id="container">
+        <div class="form-container sign-up-container ">
             <!-- sign up start-->
-            <form action="#">
-                <h1>Create Account</h1>
-                <input type="text" placeholder="Name" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <button>Sign Up</button>
+            <form method="post" action="inc/signup.inc.php" enctype="multipart/form-data">
+                <div class="d-flex justify-content-between">
+                    <input class="me-1"type="text" name="org_name" id="org_name" placeholder="Org. Name" required>
+
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                </div>
+                <?php
+                if (isset($_REQUEST["er"])) {
+                    echo "<div class='text-danger text-start'> Email Exists!</div>";
+                }
+                ?>
+                <input type="password" name="password" id="pass" placeholder="Password" required>
+                <input type="text" name="org_description" id="org_description" placeholder="Organization Description" required></input>
+                <div class="d-flex justify-content-between align-items-baseline"> <label>Established </label>
+                    <input type="date" name="date_of_est" id="date_of_est" placeholder="Date Of Establish" required>
+                </div>
+                <input type="text" name="location" id="location" placeholder="Location" required>
+                <div class="d-flex justify-content-between">
+                <label for="file" class="me-2 custom-file-upload">
+                <i class="fa-solid fa-upload" style="color: #3498db"></i> picture
+    </label>
+
+                <input class="custom-file-upload" type="file" id="file" name="file" required style="width:20vw">
+                <button name="register" type="submit" >Sign Up</button>
+                </div>
             </form>
             <!-- sign up end-->
         </div>
@@ -295,14 +325,14 @@
         ?>">
                 <input type="password" class="form-control" placeholder="type your password" name="password">
                 <div>
-          <?php
-          if (isset($_REQUEST["error"])) {
-            echo " <small class ='text-danger'> 
+                    <?php
+                    if (isset($_REQUEST["error"])) {
+                        echo " <small class ='text-danger'> 
             Make sure the email address and password you entered is correct.
             </small>";
-          }
-          ?>
-        </div> 
+                    }
+                    ?>
+                </div>
                 <button type="submit">Sign In</button>
             </form>
             <!-- sign in end-->
@@ -310,12 +340,12 @@
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>Welcome Back!</h1>
+                    <h1>Hello, Organization!</h1>
                     <p>To keep connected with us please login with your personal info</p>
                     <button class="ghost" id="signIn">Sign In</button>
                 </div>
                 <div class="overlay-panel overlay-right">
-                    <h1>Hello, Organization!</h1>
+                    <h1>Welcome Back!</h1>
                     <p>Enter your personal details and start journey with us</p>
                     <button class="ghost" id="signUp">Sign Up</button>
                 </div>
