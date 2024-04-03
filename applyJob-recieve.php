@@ -132,15 +132,7 @@ if ($cv_value != null && $phone_number != null && preg_match($pattern, $phone_nu
 // header("Location: jobs.php");
 // $data->fetch_assoc();
 $connection->close();
-echo '<div class="d-flex justify-content-center align-items-center flex-column mt-5 pt-4">
-
-<div class="alert alert-success w-75" role="alert">
-        A simple success alert—check it out!
-        </div>
-
-        <a href="jobsData.php" class="btn btn-primary p2">Go back</a>
-</div>
-';
+echo "Check your last jobs or last projects";
 // header("Location: jobs.php");
 // header("location:jobsData.php")
 ?>
