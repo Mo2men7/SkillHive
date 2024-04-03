@@ -1,4 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for a job</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<style>
+    .bg_title{
+        background: linear-gradient(90deg, rgba(0, 116, 255, 1) 0%, rgba(33, 216, 255, 1) 100%);
+    }
+</style>
+</head>
+
+<body>
     <?php
         require_once "header.php";
 
@@ -15,9 +30,14 @@
 
     <!-- contact info   start-->
     <div class="container">
+        <div>
+        Apply to 
+
+
+        </div>
         <br><br>
-        <div class="bg-light container p-3 border border-warning">
-            <h1 class=" text-warning">contact info</h1>
+        <div class="bg-white container ">
+            <h1 class="text-white text-center bg_title">Confirm Data</h1>
             <!-- contact info  end-->
             <?php echo $user_info['fname'] . " " . $user_info['lname']; ?>
             <br>
